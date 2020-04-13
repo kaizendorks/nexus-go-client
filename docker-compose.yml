@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  nexus:
+    image: sonatype/nexus3:3.21.1
+    environment:
+      NEXUS_SECURITY_RANDOMPASSWORD: 'false'
+    ports:
+      - '8081:8081'
+
+  sdk:
+    build: .
+    volumes:
+      - .:/go/src/github.com/kaizendorks/go-nexus
