@@ -37,7 +37,7 @@ type RoleResponse struct {
 // List retrieves a list of all the existing roles
 // api endpoint: GET ​/beta/security/roles
 // responses:
-// 		200: successful operation return RoleResponse slice and nil error
+// 		200: successful operation returns RoleResponse slice and nil error
 // 		403: Insufficient permissions to read roles
 func (a SecurityManagementRolesAPI) List() ([]RoleResponse, error) {
 	path := fmt.Sprintf("beta/security/roles")
@@ -49,7 +49,7 @@ func (a SecurityManagementRolesAPI) List() ([]RoleResponse, error) {
 // parameters:
 // 		source: The ID of the user source to filter the roles by.
 // responses:
-//  	200: successful operation return RoleResponse slice and nil error
+//  	200: successful operation returns RoleResponse slice and nil error
 //   	400: The specified source does not exist
 //   	403: Insufficient permissions to read roles
 func (a SecurityManagementRolesAPI) ListFromSource(source string) ([]RoleResponse, error) {
@@ -73,7 +73,7 @@ func (a SecurityManagementRolesAPI) list(path string) ([]RoleResponse, error) {
 // parameters:
 // 		r: A Role configuration
 // responses:
-// 		200: successful operation return RoleResponse and nil error
+// 		200: successful operation returns RoleResponse and nil error
 // 		403: Insufficient permissions to create role
 func (a SecurityManagementRolesAPI) Create(r Role) (RoleResponse, error) {
 	path := fmt.Sprintf("beta/security/roles")
@@ -94,7 +94,7 @@ func (a SecurityManagementRolesAPI) Create(r Role) (RoleResponse, error) {
 // Get retrieves an existing role by ID
 // api endpoint: GET ​/beta/security/{id}
 // responses:
-// 		200: successful operation return RoleResponse and nil error
+// 		200: successful operation returns RoleResponse and nil error
 //   	403: Insufficient permissions to read roles
 // 		404: Role not found
 func (a SecurityManagementRolesAPI) Get(id string) (RoleResponse, error) {
@@ -107,7 +107,7 @@ func (a SecurityManagementRolesAPI) Get(id string) (RoleResponse, error) {
 // parameters:
 // 		source: The ID of the user source to filter the roles by. Can be fetched using SecurityManagementAPI.List().
 // responses:
-// 		200: successful operation return RoleResponse and nil error
+// 		200: successful operation returns RoleResponse and nil error
 // 		400: The specified source does not exist
 // 		403: Insufficient permissions to read roles
 // 		404: Role not found
@@ -127,7 +127,7 @@ func (a SecurityManagementRolesAPI) get(path string) (RoleResponse, error) {
 	return rr, err
 }
 
-// Update an existing role using it's ID
+// Update an existing role using its ID
 // api endpoint: /beta/security/roles/{id}
 // parameters:
 // 		id: The id of the role to update
@@ -145,7 +145,7 @@ func (a SecurityManagementRolesAPI) Update(id string, r Role) error {
 	return err
 }
 
-// Delete an existing role using it's ID
+// Delete an existing role using its ID
 // api endpoint: /beta/security/roles/{id}
 // parameters:
 // 		id: The id of the role to delete

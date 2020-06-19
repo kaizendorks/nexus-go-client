@@ -26,7 +26,7 @@ type ScriptResult struct {
 // List all stored scripts
 // api endpoint: GET /v1​/script
 // responses:
-// 		200: successful operation return a Script slice and nil error
+// 		200: successful operation returns a Script slice and nil error
 func (a ScriptAPI) List() ([]Script, error) {
 	ss := []Script{}
 	path := fmt.Sprintf("v1/script")
@@ -63,7 +63,7 @@ func (a ScriptAPI) Create(s Script) error {
 // parameters:
 // 		scriptName: The name of the script.
 // responses:
-// 		200: successful operation return Script object and nil error.
+// 		200: successful operation returns Script object and nil error.
 // 		404: No script with the specified name
 func (a ScriptAPI) Get(scriptName string) (Script, error) {
 	s := Script{}
@@ -116,7 +116,7 @@ func (a ScriptAPI) Delete(scriptName string) error {
 // 		scriptName: the name of the script to execute.
 // 		params: an optional key/value map containing string params (use nil for script without params)
 // responses:
-// 		200: successful operation return ScriptResult object and nil error
+// 		200: successful operation returns ScriptResult object and nil error
 // 		404: No script with the specified name
 // 		500: Script execution failed with exception
 func (a ScriptAPI) Run(scriptName string, params map[string]string) (ScriptResult, error) {

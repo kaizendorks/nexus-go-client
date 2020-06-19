@@ -29,6 +29,7 @@ type Client struct {
 	Script                  *ScriptAPI
 	SecurityManagement      *SecurityManagementAPI
 	SecurityManagementRoles *SecurityManagementRolesAPI
+	SecurityManagementUsers *SecurityManagementUsersAPI
 	Status                  *StatusAPI
 }
 
@@ -68,6 +69,7 @@ func NewClient(config ClientConfig) Client {
 	c.Script = &ScriptAPI{client: &c}
 	c.SecurityManagement = &SecurityManagementAPI{client: &c}
 	c.SecurityManagementRoles = &SecurityManagementRolesAPI{client: &c}
+	c.SecurityManagementUsers = &SecurityManagementUsersAPI{client: &c}
 	c.Status = &StatusAPI{client: &c}
 
 	return c
@@ -108,14 +110,12 @@ func (c Client) sendRequest(method, path string, body io.Reader, headers map[str
 }
 
 func (c ClientConfig) getRequestHeaders(headers map[string]string) map[string]string {
-	requestHeaders := make(map[string]string)
-
 	// Default headers
 	encodedAuth := []byte(c.Username + ":" + c.Password)
-	requestHeaders["Authorization"] = "Basic " + base64.StdEncoding.EncodeToString(encodedAuth)
-	requestHeaders["Content-Type"] = "application/json"
-
-	// Add other default headers here.
+	requestHeaders := map[string]string{
+		"Authorization": "Basic " + base64.StdEncoding.EncodeToString(encodedAuth),
+		"Content-Type":  "application/json",
+	}
 
 	// Merge user headers with default headers if needed
 	for k, v := range headers {

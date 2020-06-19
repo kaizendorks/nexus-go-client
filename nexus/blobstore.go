@@ -34,7 +34,7 @@ type QuotaStatusResponse struct {
 // List all blob stores
 // endpoint: GET /beta​/blobstores
 // responses:
-// 		200: Successful operation return BlobStore slice and nill error
+// 		200: successful operation returns BlobStore slice and nill error
 func (a BlobStoreAPI) List() ([]BlobStore, error) {
 	bb := []BlobStore{}
 	path := fmt.Sprintf("beta/blobstores")
@@ -54,7 +54,7 @@ func (a BlobStoreAPI) List() ([]BlobStore, error) {
 // 			description: The name of the blob store to delete
 // 			required: true
 // 	responses:
-// 		default: Successful operation return nill error
+// 		default: successful operation returns nill error
 func (a BlobStoreAPI) Delete(blobStoreName string) error {
 	path := fmt.Sprintf("beta/blobstores/%s", blobStoreName)
 
@@ -69,7 +69,7 @@ func (a BlobStoreAPI) Delete(blobStoreName string) error {
 //      description: the name of the blob store for which to return the quota status
 // 			required: true
 // responses:
-// 		200: Successful operation return QuotaStatusResponse and nil error.
+// 		200: successful operation returns QuotaStatusResponse and nil error.
 func (a BlobStoreAPI) GetQuotaStatus(blobStoreName string) (QuotaStatusResponse, error) {
 	qs := QuotaStatusResponse{}
 	path := fmt.Sprintf("v1/blobstores/%s/quota-status", blobStoreName)

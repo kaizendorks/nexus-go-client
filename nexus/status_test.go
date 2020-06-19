@@ -29,17 +29,18 @@ func (suite *MockedClientSuite) TestStatusReadableError() {
 }
 
 func (suite *NexusClientSuite) TestStatusCheck() {
-	expected := make(map[string]nexus.SystemStatus)
-	expected["Available CPUs"] = nexus.SystemStatus{Healthy: true}
-	expected["Blob Stores"] = nexus.SystemStatus{Healthy: true}
-	expected["Default Admin Credentials"] = nexus.SystemStatus{Healthy: false}
-	expected["DefaultRoleRealm"] = nexus.SystemStatus{Healthy: true}
-	expected["File Descriptors"] = nexus.SystemStatus{Healthy: true}
-	expected["Lifecycle Phase"] = nexus.SystemStatus{Healthy: true}
-	expected["Read-Only Detector"] = nexus.SystemStatus{Healthy: true}
-	expected["Scheduler"] = nexus.SystemStatus{Healthy: true}
-	expected["Thread Deadlock Detector"] = nexus.SystemStatus{Healthy: true}
-	expected["Transactions"] = nexus.SystemStatus{Healthy: true}
+	expected := map[string]nexus.SystemStatus{
+		"Available CPUs":            nexus.SystemStatus{Healthy: true},
+		"Blob Stores":               nexus.SystemStatus{Healthy: true},
+		"Default Admin Credentials": nexus.SystemStatus{Healthy: false},
+		"DefaultRoleRealm":          nexus.SystemStatus{Healthy: true},
+		"File Descriptors":          nexus.SystemStatus{Healthy: true},
+		"Lifecycle Phase":           nexus.SystemStatus{Healthy: true},
+		"Read-Only Detector":        nexus.SystemStatus{Healthy: true},
+		"Scheduler":                 nexus.SystemStatus{Healthy: true},
+		"Thread Deadlock Detector":  nexus.SystemStatus{Healthy: true},
+		"Transactions":              nexus.SystemStatus{Healthy: true},
+	}
 
 	actual, err := suite.client.Status.StatusCheck()
 

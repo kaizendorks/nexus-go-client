@@ -73,7 +73,7 @@ func (suite *NexusClientSuite) TestScriptRunError() {
 		Type: "groovy",
 	}
 
-	params := make(map[string]string)
+	params := map[string]string{}
 
 	// Create
 	err := suite.client.Script.Create(testScript)
