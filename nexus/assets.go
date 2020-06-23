@@ -18,19 +18,19 @@ type AssetsAPI api
 // 		200: Successful operation returns AssetListResponse and nil error
 // 		403: Insufficient permissions to list assets
 // 		422: Parameter 'repository' is required (this method should never get into this state when using the go client.)
-func (a AssetsAPI) List(af AssetFilter) (*AssetListResponse, error) {
+func (a AssetsAPI) List(af AssetFilter) (AssetListResponse, error) {
 	path := fmt.Sprintf("v1/assets?repository=%s", af.Repository)
 	if af.ContinuationToken != "" {
 		path = fmt.Sprintf("%s&%s", path, af.ContinuationToken)
 	}
 
-	assetResp := &AssetListResponse{}
+	assetResp := AssetListResponse{}
 
 	resp, err := a.client.sendRequest(http.MethodGet, path, nil, nil)
 	if err != nil {
 		return assetResp, err
 	}
-	err = json.Unmarshal(resp, assetResp)
+	err = json.Unmarshal(resp, &assetResp)
 	return assetResp, err
 }
 
@@ -43,16 +43,16 @@ func (a AssetsAPI) List(af AssetFilter) (*AssetListResponse, error) {
 // 		403: Insufficient permissions to get asset
 // 		404: Asset not found
 // 		422: Malformed ID
-func (a AssetsAPI) Get(assetId string) (*Asset, error) {
-	asset := &Asset{}
+func (a AssetsAPI) Get(assetId string) (Asset, error) {
 	path := fmt.Sprintf("v1/assets/%s", assetId)
+	asset := Asset{}
 
 	resp, err := a.client.sendRequest(http.MethodGet, path, nil, nil)
 	if err != nil {
 		return asset, err
 	}
 
-	err = json.Unmarshal(resp, asset)
+	err = json.Unmarshal(resp, &asset)
 	return asset, err
 }
 

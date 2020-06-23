@@ -29,7 +29,7 @@ func (suite *NexusClientSuite) TestAssetsList() {
 }
 
 func (suite *MockedClientSuite) TestAssetsGet() {
-	expected := &models.Asset{
+	expected := models.Asset{
 		Checksum:    map[string]string{"sha1": "c2eabea90b4b10ec5a26de63ea7516f38d805026", "sha256": "8415f3081edf1ad04b0333c18f5a2cc23e647aa67d5958a1b1b613a20943c6c6"},
 		DownloadURL: "https://testurl/repository/chips-docker-registry/v2/-/blobs/sha256:8415f3081edf1ad04b0333c18f5a2cc23e647aa67d5958a1b1b613a20943c6c6",
 		Format:      "docker",

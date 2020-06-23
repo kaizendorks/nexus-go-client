@@ -1,6 +1,8 @@
 # nexus-go-client
 >A minimal Golang client for interacting with the Nexus Repository APIs.
 
+[![Build Status](https://travis-ci.org/kaizendorks/nexus-go-client.svg?branch=master)](https://travis-ci.org/kaizendorks/vuecli-in-docker)
+
 ## Description
 
 As the name suggests this is a minimal Nexus API client written in go for interacting with the APIs defined here: https://help.sonatype.com/repomanager3/rest-and-integration-api

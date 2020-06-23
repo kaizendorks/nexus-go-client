@@ -49,7 +49,7 @@ func (suite *NexusClientSuite) TestStatusCheck() {
 
 	// TODO: find better way to test partial complex structs
 	for k, v := range actual {
-		assert.Equal(suite.T(), expected[k].Healthy, v.Healthy)
+		assert.Equal(suite.T(), expected[k].Healthy, v.Healthy, k)
 	}
 }
 
