@@ -3,22 +3,22 @@ package nexus_test
 import (
 	"github.com/stretchr/testify/assert"
 
-	"github.com/kaizendorks/nexus-go-client/nexus"
+	"github.com/kaizendorks/nexus-go-client/models"
 )
 
 func (suite *NexusClientSuite) TestRepositoryManagementYUMHosted() {
 	name := "yum-hosted-test"
-	testRepository := nexus.YUMHostedRepository{
-		Cleanup: &nexus.Cleanup{
+	testRepository := models.YUMHostedRepository{
+		Cleanup: &models.Cleanup{
 			PolicyNames: []string{"weekly-cleanup"},
 		},
 		Name: name,
-		YUM: &nexus.YUMAttributes{
+		YUM: &models.YUMAttributes{
 			DeployPolicy:  "PERMISSIVE",
 			RepodataDepth: 2,
 		},
 		Online: true,
-		Storage: &nexus.Storage{
+		Storage: &models.Storage{
 			BlobStoreName:               "default",
 			StrictContentTypeValidation: true,
 			WritePolicy:                 "ALLOW_ONCE",

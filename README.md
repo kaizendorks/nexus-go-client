@@ -31,9 +31,9 @@ Construct a new Nexus client, then use the various services on the client to acc
 
 ```go
 client := nexus.NewClient(nexus.ClientConfig{
-  Host:     nexusHost,
-  Username: nexusUsername,
-  Password: nexusPassword,
+	Host:		 nexusHost,
+	Username: nexusUsername,
+	Password: nexusPassword,
 })
 
 err := client.Status.StatusWritable()

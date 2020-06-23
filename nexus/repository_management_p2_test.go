@@ -3,29 +3,29 @@ package nexus_test
 import (
 	"github.com/stretchr/testify/assert"
 
-	"github.com/kaizendorks/nexus-go-client/nexus"
+	"github.com/kaizendorks/nexus-go-client/models"
 )
 
 func (suite *NexusClientSuite) TestRepositoryManagementP2Proxy() {
 	name := "p2-proxy-test"
-	testRepository := nexus.P2ProxyRepository{
-		HTTPClient: &nexus.HTTPClient{
+	testRepository := models.P2ProxyRepository{
+		HTTPClient: &models.HTTPClient{
 			AutoBlock: true,
 			Blocked:   true,
 		},
 		Name: name,
-		NegativeCache: &nexus.NegativeCache{
+		NegativeCache: &models.NegativeCache{
 			Enabled:    true,
 			TimeToLive: 1440,
 		},
 		Online: true,
-		Proxy: &nexus.Proxy{
+		Proxy: &models.Proxy{
 			ContentMaxAge:  1440,
 			MetadataMaxAge: 1440,
 			RemoteURL:      "http://test",
 		},
 		RoutingRule: "test",
-		Storage: &nexus.Storage{
+		Storage: &models.Storage{
 			BlobStoreName:               "default",
 			StrictContentTypeValidation: true,
 		},

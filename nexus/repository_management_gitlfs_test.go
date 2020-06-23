@@ -3,18 +3,18 @@ package nexus_test
 import (
 	"github.com/stretchr/testify/assert"
 
-	"github.com/kaizendorks/nexus-go-client/nexus"
+	"github.com/kaizendorks/nexus-go-client/models"
 )
 
 func (suite *NexusClientSuite) TestRepositoryManagementGitLFSHosted() {
 	name := "gitlfs-hosted-test"
-	testRepository := nexus.GitLFSHostedRepository{
-		Cleanup: &nexus.Cleanup{
+	testRepository := models.GitLFSHostedRepository{
+		Cleanup: &models.Cleanup{
 			PolicyNames: []string{"weekly-cleanup"},
 		},
 		Name:   name,
 		Online: true,
-		Storage: &nexus.Storage{
+		Storage: &models.Storage{
 			BlobStoreName:               "default",
 			StrictContentTypeValidation: true,
 			WritePolicy:                 "ALLOW_ONCE",

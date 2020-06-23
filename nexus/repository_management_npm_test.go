@@ -3,14 +3,14 @@ package nexus_test
 import (
 	"github.com/stretchr/testify/assert"
 
-	"github.com/kaizendorks/nexus-go-client/nexus"
+	"github.com/kaizendorks/nexus-go-client/models"
 )
 
 func (suite *NexusClientSuite) TestRepositoryManagementNPMGroup() {
 	hostedRepositoryName := "npm-hosted-test"
-	err := suite.client.RepositoryManagement.CreateNPMHosted(nexus.NPMHostedRepository{
+	err := suite.client.RepositoryManagement.CreateNPMHosted(models.NPMHostedRepository{
 		Name: hostedRepositoryName,
-		Storage: &nexus.Storage{
+		Storage: &models.Storage{
 			BlobStoreName: "default",
 			WritePolicy:   "ALLOW_ONCE",
 		},
@@ -19,13 +19,13 @@ func (suite *NexusClientSuite) TestRepositoryManagementNPMGroup() {
 
 	name := "npm-group-test"
 	// Create
-	testRepository := nexus.NPMGroupRepository{
-		Group: &nexus.Group{
+	testRepository := models.NPMGroupRepository{
+		Group: &models.Group{
 			MemberNames: []string{hostedRepositoryName},
 		},
 		Name:   name,
 		Online: true,
-		Storage: &nexus.Storage{
+		Storage: &models.Storage{
 			BlobStoreName:               "default",
 			StrictContentTypeValidation: true,
 			WritePolicy:                 "ALLOW_ONCE",
@@ -48,13 +48,13 @@ func (suite *NexusClientSuite) TestRepositoryManagementNPMGroup() {
 
 func (suite *NexusClientSuite) TestRepositoryManagementNPMHosted() {
 	name := "npm-hosted-test"
-	testRepository := nexus.NPMHostedRepository{
-		Cleanup: &nexus.Cleanup{
+	testRepository := models.NPMHostedRepository{
+		Cleanup: &models.Cleanup{
 			PolicyNames: []string{"weekly-cleanup"},
 		},
 		Name:   name,
 		Online: true,
-		Storage: &nexus.Storage{
+		Storage: &models.Storage{
 			BlobStoreName:               "default",
 			StrictContentTypeValidation: true,
 			WritePolicy:                 "ALLOW_ONCE",
@@ -76,24 +76,24 @@ func (suite *NexusClientSuite) TestRepositoryManagementNPMHosted() {
 
 func (suite *NexusClientSuite) TestRepositoryManagementNPMProxy() {
 	name := "npm-proxy-test"
-	testRepository := nexus.NPMProxyRepository{
-		HTTPClient: &nexus.HTTPClient{
+	testRepository := models.NPMProxyRepository{
+		HTTPClient: &models.HTTPClient{
 			AutoBlock: true,
 			Blocked:   true,
 		},
 		Name: name,
-		NegativeCache: &nexus.NegativeCache{
+		NegativeCache: &models.NegativeCache{
 			Enabled:    true,
 			TimeToLive: 1440,
 		},
 		Online: true,
-		Proxy: &nexus.Proxy{
+		Proxy: &models.Proxy{
 			ContentMaxAge:  1440,
 			MetadataMaxAge: 1440,
 			RemoteURL:      "http://test",
 		},
 		RoutingRule: "test",
-		Storage: &nexus.Storage{
+		Storage: &models.Storage{
 			BlobStoreName:               "default",
 			StrictContentTypeValidation: true,
 		},

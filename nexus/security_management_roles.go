@@ -5,59 +5,26 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+
+	. "github.com/kaizendorks/nexus-go-client/models"
 )
 
 type SecurityManagementRolesAPI api
 
-type Role struct {
-	Description string `json:"description,omitempty"`
-	ID          string `json:"id,omitempty"`
-	Name        string `json:"name,omitempty"`
-
-	// The list of privileges assigned to this role.
-	// Unique: true
-	Privileges []string `json:"privileges"`
-
-	// The list of roles assigned to this role.
-	// Unique: true
-	Roles []string `json:"roles"`
-}
-
-type RoleResponse struct {
-	Description string   `json:"description,omitempty"`
-	ID          string   `json:"id,omitempty"`
-	Name        string   `json:"name,omitempty"`
-	Privileges  []string `json:"privileges"`
-	Roles       []string `json:"roles"`
-
-	// The user source which is the origin of this role.
-	Source string `json:"source,omitempty"`
-}
-
 // List retrieves a list of all the existing roles
-// api endpoint: GET ​/beta/security/roles
-// responses:
-// 		200: successful operation returns RoleResponse slice and nil error
-// 		403: Insufficient permissions to read roles
-func (a SecurityManagementRolesAPI) List() ([]RoleResponse, error) {
+//	api endpoint: GET ​/beta/security/roles
+//	parameters:
+// 		rf: RoleFilter object consisting of options to filter the results by.
+//	responses:
+//		200: successful operation returns RoleResponse slice and nil error
+//	 	400: The specified source does not exist
+//	 	403: Insufficient permissions to read roles
+func (a SecurityManagementRolesAPI) List(rf RoleFilter) ([]RoleResponse, error) {
 	path := fmt.Sprintf("beta/security/roles")
-	return a.list(path)
-}
+	if rf.Source != "" {
+		path = fmt.Sprintf("%s?source=%s", path, rf.Source)
+	}
 
-// ListFromSource retrieves a of roles belonging to a particular user source
-// api endpoint: GET ​/beta/security/roles?source={source}
-// parameters:
-// 		source: The ID of the user source to filter the roles by.
-// responses:
-//  	200: successful operation returns RoleResponse slice and nil error
-//   	400: The specified source does not exist
-//   	403: Insufficient permissions to read roles
-func (a SecurityManagementRolesAPI) ListFromSource(source string) ([]RoleResponse, error) {
-	path := fmt.Sprintf("beta/security/roles?source=%s", source)
-	return a.list(path)
-}
-
-func (a SecurityManagementRolesAPI) list(path string) ([]RoleResponse, error) {
 	rr := []RoleResponse{}
 
 	resp, err := a.client.sendRequest(http.MethodGet, path, nil, nil)
@@ -69,10 +36,10 @@ func (a SecurityManagementRolesAPI) list(path string) ([]RoleResponse, error) {
 }
 
 // Create a new role
-// api endpoint: /beta/security/roles
-// parameters:
+//	api endpoint: /beta/security/roles
+//	parameters:
 // 		r: A Role configuration
-// responses:
+//	responses:
 // 		200: successful operation returns RoleResponse and nil error
 // 		403: Insufficient permissions to create role
 func (a SecurityManagementRolesAPI) Create(r Role) (RoleResponse, error) {
@@ -92,31 +59,21 @@ func (a SecurityManagementRolesAPI) Create(r Role) (RoleResponse, error) {
 }
 
 // Get retrieves an existing role by ID
-// api endpoint: GET ​/beta/security/{id}
-// responses:
-// 		200: successful operation returns RoleResponse and nil error
-//   	403: Insufficient permissions to read roles
-// 		404: Role not found
-func (a SecurityManagementRolesAPI) Get(id string) (RoleResponse, error) {
-	path := fmt.Sprintf("beta/security/roles/%s", id)
-	return a.get(path)
-}
-
-// GetFromSource retrieves an existing role belonging to a particular user source
-// api endpoint: GET ​/beta/security/roles/{id}?source={source}
-// parameters:
-// 		source: The ID of the user source to filter the roles by. Can be fetched using SecurityManagementAPI.List().
-// responses:
+//	api endpoint: GET ​/beta/security/roles/{id}?source={source}
+//	parameters:
+//		id: The id of the role to look for
+// 		rf: RoleFilter object consisting of options to filter the results by.
+//	responses:
 // 		200: successful operation returns RoleResponse and nil error
 // 		400: The specified source does not exist
 // 		403: Insufficient permissions to read roles
 // 		404: Role not found
-func (a SecurityManagementRolesAPI) GetFromSource(id, source string) (RoleResponse, error) {
-	path := fmt.Sprintf("beta/security/roles/%s?source=%s", id, source)
-	return a.get(path)
-}
+func (a SecurityManagementRolesAPI) Get(id string, rf RoleFilter) (RoleResponse, error) {
+	path := fmt.Sprintf("beta/security/roles/%s", id)
+	if rf.Source != "" {
+		path = fmt.Sprintf("%s?source=%s", path, rf.Source)
+	}
 
-func (a SecurityManagementRolesAPI) get(path string) (RoleResponse, error) {
 	rr := RoleResponse{}
 
 	resp, err := a.client.sendRequest(http.MethodGet, path, nil, nil)
@@ -128,11 +85,11 @@ func (a SecurityManagementRolesAPI) get(path string) (RoleResponse, error) {
 }
 
 // Update an existing role using its ID
-// api endpoint: /beta/security/roles/{id}
-// parameters:
+//	api endpoint: /beta/security/roles/{id}
+//	parameters:
 // 		id: The id of the role to update
 // 		r: A Role configuration struct
-// responses:
+//	responses:
 // 		403: Insufficient permissions to update role
 // 		404: Role not found
 func (a SecurityManagementRolesAPI) Update(id string, r Role) error {
@@ -146,10 +103,10 @@ func (a SecurityManagementRolesAPI) Update(id string, r Role) error {
 }
 
 // Delete an existing role using its ID
-// api endpoint: /beta/security/roles/{id}
-// parameters:
+//	api endpoint: /beta/security/roles/{id}
+//	parameters:
 // 		id: The id of the role to delete
-// responses:
+//	responses:
 // 		403: Insufficient permissions to delete role
 // 		404: Role not found
 func (a SecurityManagementRolesAPI) Delete(id string) error {

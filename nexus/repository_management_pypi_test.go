@@ -3,14 +3,14 @@ package nexus_test
 import (
 	"github.com/stretchr/testify/assert"
 
-	"github.com/kaizendorks/nexus-go-client/nexus"
+	"github.com/kaizendorks/nexus-go-client/models"
 )
 
 func (suite *NexusClientSuite) TestRepositoryManagementPyPiGroup() {
 	hostedRepositoryName := "pypi-hosted-test"
-	err := suite.client.RepositoryManagement.CreatePyPiHosted(nexus.PyPiHostedRepository{
+	err := suite.client.RepositoryManagement.CreatePyPiHosted(models.PyPiHostedRepository{
 		Name: hostedRepositoryName,
-		Storage: &nexus.Storage{
+		Storage: &models.Storage{
 			BlobStoreName: "default",
 			WritePolicy:   "ALLOW_ONCE",
 		},
@@ -19,13 +19,13 @@ func (suite *NexusClientSuite) TestRepositoryManagementPyPiGroup() {
 
 	name := "pypi-group-test"
 	// Create
-	testRepository := nexus.PyPiGroupRepository{
-		Group: &nexus.Group{
+	testRepository := models.PyPiGroupRepository{
+		Group: &models.Group{
 			MemberNames: []string{hostedRepositoryName},
 		},
 		Name:   name,
 		Online: true,
-		Storage: &nexus.Storage{
+		Storage: &models.Storage{
 			BlobStoreName:               "default",
 			StrictContentTypeValidation: true,
 			WritePolicy:                 "ALLOW_ONCE",
@@ -48,13 +48,13 @@ func (suite *NexusClientSuite) TestRepositoryManagementPyPiGroup() {
 
 func (suite *NexusClientSuite) TestRepositoryManagementPyPiHosted() {
 	name := "pypi-hosted-test"
-	testRepository := nexus.PyPiHostedRepository{
-		Cleanup: &nexus.Cleanup{
+	testRepository := models.PyPiHostedRepository{
+		Cleanup: &models.Cleanup{
 			PolicyNames: []string{"weekly-cleanup"},
 		},
 		Name:   name,
 		Online: true,
-		Storage: &nexus.Storage{
+		Storage: &models.Storage{
 			BlobStoreName:               "default",
 			StrictContentTypeValidation: true,
 			WritePolicy:                 "ALLOW_ONCE",
@@ -76,24 +76,24 @@ func (suite *NexusClientSuite) TestRepositoryManagementPyPiHosted() {
 
 func (suite *NexusClientSuite) TestRepositoryManagementPyPiProxy() {
 	name := "pypi-proxy-test"
-	testRepository := nexus.PyPiProxyRepository{
-		HTTPClient: &nexus.HTTPClient{
+	testRepository := models.PyPiProxyRepository{
+		HTTPClient: &models.HTTPClient{
 			AutoBlock: true,
 			Blocked:   true,
 		},
 		Name: name,
-		NegativeCache: &nexus.NegativeCache{
+		NegativeCache: &models.NegativeCache{
 			Enabled:    true,
 			TimeToLive: 1440,
 		},
 		Online: true,
-		Proxy: &nexus.Proxy{
+		Proxy: &models.Proxy{
 			ContentMaxAge:  1440,
 			MetadataMaxAge: 1440,
 			RemoteURL:      "http://test",
 		},
 		RoutingRule: "test",
-		Storage: &nexus.Storage{
+		Storage: &models.Storage{
 			BlobStoreName:               "default",
 			StrictContentTypeValidation: true,
 		},

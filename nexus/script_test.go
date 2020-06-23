@@ -6,6 +6,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
+	"github.com/kaizendorks/nexus-go-client/models"
 	"github.com/kaizendorks/nexus-go-client/nexus"
 )
 
@@ -13,7 +14,7 @@ func (suite *NexusClientSuite) TestScriptList() {
 	ss, err := suite.client.Script.List()
 
 	assert.NoError(suite.T(), err)
-	assert.ElementsMatch(suite.T(), ss, []nexus.Script{})
+	assert.ElementsMatch(suite.T(), ss, []models.Script{})
 }
 
 func (suite *MockedClientSuite) TestScriptListError() {
@@ -33,7 +34,7 @@ func (suite *MockedClientSuite) TestScriptListError() {
 
 func (suite *NexusClientSuite) TestScriptWithoutParams() {
 	name := "test-script"
-	testScript := nexus.Script{
+	testScript := models.Script{
 		Name:    name,
 		Content: "return 'Hello World!'",
 		Type:    "groovy",
@@ -63,7 +64,7 @@ func (suite *NexusClientSuite) TestScriptWithParams() {
 
 func (suite *NexusClientSuite) TestScriptRunError() {
 	name := "test-script"
-	testScript := nexus.Script{
+	testScript := models.Script{
 		Name: name,
 		Content: `
 			import groovy.json.JsonSlurper;

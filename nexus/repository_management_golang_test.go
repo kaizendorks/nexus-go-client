@@ -3,29 +3,29 @@ package nexus_test
 import (
 	"github.com/stretchr/testify/assert"
 
-	"github.com/kaizendorks/nexus-go-client/nexus"
+	"github.com/kaizendorks/nexus-go-client/models"
 )
 
 func (suite *NexusClientSuite) TestRepositoryManagementGolangGroup() {
 	proxyRepositoryName := "golang-proxy-test"
-	err := suite.client.RepositoryManagement.CreateGolangProxy(nexus.GolangProxyRepository{
-		HTTPClient: &nexus.HTTPClient{
+	err := suite.client.RepositoryManagement.CreateGolangProxy(models.GolangProxyRepository{
+		HTTPClient: &models.HTTPClient{
 			AutoBlock: true,
 			Blocked:   true,
 		},
 		Name: proxyRepositoryName,
-		NegativeCache: &nexus.NegativeCache{
+		NegativeCache: &models.NegativeCache{
 			Enabled:    true,
 			TimeToLive: 1440,
 		},
 		Online: true,
-		Proxy: &nexus.Proxy{
+		Proxy: &models.Proxy{
 			ContentMaxAge:  1440,
 			MetadataMaxAge: 1440,
 			RemoteURL:      "http://test",
 		},
 		RoutingRule: "test",
-		Storage: &nexus.Storage{
+		Storage: &models.Storage{
 			BlobStoreName:               "default",
 			StrictContentTypeValidation: true,
 		},
@@ -35,13 +35,13 @@ func (suite *NexusClientSuite) TestRepositoryManagementGolangGroup() {
 
 	name := "golang-group-test"
 	// Create
-	testRepository := nexus.GolangGroupRepository{
-		Group: &nexus.Group{
+	testRepository := models.GolangGroupRepository{
+		Group: &models.Group{
 			MemberNames: []string{proxyRepositoryName},
 		},
 		Name:   name,
 		Online: true,
-		Storage: &nexus.Storage{
+		Storage: &models.Storage{
 			BlobStoreName:               "default",
 			StrictContentTypeValidation: true,
 			WritePolicy:                 "ALLOW_ONCE",
@@ -64,24 +64,24 @@ func (suite *NexusClientSuite) TestRepositoryManagementGolangGroup() {
 
 func (suite *NexusClientSuite) TestRepositoryManagementGolangProxy() {
 	name := "golang-proxy-test"
-	testRepository := nexus.GolangProxyRepository{
-		HTTPClient: &nexus.HTTPClient{
+	testRepository := models.GolangProxyRepository{
+		HTTPClient: &models.HTTPClient{
 			AutoBlock: true,
 			Blocked:   true,
 		},
 		Name: name,
-		NegativeCache: &nexus.NegativeCache{
+		NegativeCache: &models.NegativeCache{
 			Enabled:    true,
 			TimeToLive: 1440,
 		},
 		Online: true,
-		Proxy: &nexus.Proxy{
+		Proxy: &models.Proxy{
 			ContentMaxAge:  1440,
 			MetadataMaxAge: 1440,
 			RemoteURL:      "http://test",
 		},
 		RoutingRule: "test",
-		Storage: &nexus.Storage{
+		Storage: &models.Storage{
 			BlobStoreName:               "default",
 			StrictContentTypeValidation: true,
 		},

@@ -3,22 +3,22 @@ package nexus_test
 import (
 	"github.com/stretchr/testify/assert"
 
-	"github.com/kaizendorks/nexus-go-client/nexus"
+	"github.com/kaizendorks/nexus-go-client/models"
 )
 
 func (suite *NexusClientSuite) TestRepositoryManagementMavenHosted() {
 	name := "maven-hosted-test"
-	testRepository := nexus.MavenHostedRepository{
-		Cleanup: &nexus.Cleanup{
+	testRepository := models.MavenHostedRepository{
+		Cleanup: &models.Cleanup{
 			PolicyNames: []string{"weekly-cleanup"},
 		},
 		Name: name,
-		Maven: &nexus.MavenAttributes{
+		Maven: &models.MavenAttributes{
 			LayoutPolicy:  "PERMISSIVE",
 			VersionPolicy: "RELEASE",
 		},
 		Online: true,
-		Storage: &nexus.Storage{
+		Storage: &models.Storage{
 			BlobStoreName:               "default",
 			StrictContentTypeValidation: true,
 			WritePolicy:                 "ALLOW_ONCE",
@@ -50,28 +50,28 @@ type MavenAttributes struct {
 
 func (suite *NexusClientSuite) TestRepositoryManagementMavenProxy() {
 	name := "maven-proxy-test"
-	testRepository := nexus.MavenProxyRepository{
-		HTTPClient: &nexus.HTTPClient{
+	testRepository := models.MavenProxyRepository{
+		HTTPClient: &models.HTTPClient{
 			AutoBlock: true,
 			Blocked:   true,
 		},
 		Name: name,
-		Maven: &nexus.MavenAttributes{
+		Maven: &models.MavenAttributes{
 			LayoutPolicy:  "PERMISSIVE",
 			VersionPolicy: "RELEASE",
 		},
-		NegativeCache: &nexus.NegativeCache{
+		NegativeCache: &models.NegativeCache{
 			Enabled:    true,
 			TimeToLive: 1440,
 		},
 		Online: true,
-		Proxy: &nexus.Proxy{
+		Proxy: &models.Proxy{
 			ContentMaxAge:  1440,
 			MetadataMaxAge: 1440,
 			RemoteURL:      "http://test",
 		},
 		RoutingRule: "test",
-		Storage: &nexus.Storage{
+		Storage: &models.Storage{
 			BlobStoreName:               "default",
 			StrictContentTypeValidation: true,
 		},

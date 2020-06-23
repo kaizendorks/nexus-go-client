@@ -6,12 +6,13 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
+	"github.com/kaizendorks/nexus-go-client/models"
 	"github.com/kaizendorks/nexus-go-client/nexus"
 )
 
 func (suite *NexusClientSuite) TestSecurityManagementUsersList() {
-	expected := []nexus.User{
-		nexus.User{
+	expected := []models.User{
+		models.User{
 			EmailAddress:  "admin@example.org",
 			ExternalRoles: []string{},
 			FirstName:     "Administrator",
@@ -23,15 +24,15 @@ func (suite *NexusClientSuite) TestSecurityManagementUsersList() {
 			UserID:        "admin",
 		},
 	}
-	actual, err := suite.client.SecurityManagementUsers.List(nexus.UserFilter{UserID: "ad"})
+	actual, err := suite.client.SecurityManagementUsers.List(models.UserFilter{UserID: "ad"})
 	assert.NoError(suite.T(), err)
 	assert.Equal(suite.T(), expected, actual)
 
-	actual, err = suite.client.SecurityManagementUsers.List(nexus.UserFilter{UserID: "ad", Source: "default"})
+	actual, err = suite.client.SecurityManagementUsers.List(models.UserFilter{UserID: "ad", Source: "default"})
 	assert.NoError(suite.T(), err)
 	assert.Equal(suite.T(), expected, actual)
 
-	actual, err = suite.client.SecurityManagementUsers.List(nexus.UserFilter{Source: "default"})
+	actual, err = suite.client.SecurityManagementUsers.List(models.UserFilter{Source: "default"})
 	assert.NoError(suite.T(), err)
 	assert.NotEqual(suite.T(), expected, actual)
 	assert.Contains(suite.T(), actual, expected[0])
@@ -48,13 +49,13 @@ func (suite *MockedClientSuite) TestSecurityManagementUsersListError() {
 		Host: ts.URL,
 	})
 
-	_, err := mockedClient.SecurityManagementUsers.List(nexus.UserFilter{})
+	_, err := mockedClient.SecurityManagementUsers.List(models.UserFilter{})
 	assert.Error(suite.T(), err)
 }
 
 func (suite *NexusClientSuite) TestSecurityManagementUser() {
 	id := "test-user"
-	nu := nexus.NewUser{
+	nu := models.NewUser{
 		EmailAddress: "test@user.com",
 		FirstName:    id,
 		LastName:     id,
@@ -63,7 +64,7 @@ func (suite *NexusClientSuite) TestSecurityManagementUser() {
 		Status:       "active",
 		UserID:       id,
 	}
-	expected := nexus.User{
+	expected := models.User{
 		EmailAddress:  "test@user.com",
 		ExternalRoles: []string{},
 		FirstName:     id,
@@ -80,7 +81,7 @@ func (suite *NexusClientSuite) TestSecurityManagementUser() {
 	assert.NoError(suite.T(), err)
 	assert.Equal(suite.T(), expected, actual)
 
-	_, err = suite.client.SecurityManagementUsers.Create(nexus.NewUser{})
+	_, err = suite.client.SecurityManagementUsers.Create(models.NewUser{})
 	assert.Error(suite.T(), err)
 
 	// Update

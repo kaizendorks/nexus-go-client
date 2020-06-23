@@ -6,13 +6,14 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
+	"github.com/kaizendorks/nexus-go-client/models"
 	"github.com/kaizendorks/nexus-go-client/nexus"
 )
 
 func (suite *NexusClientSuite) TestSecurityManagementUserSource() {
-	expected := []nexus.UserSource{
-		nexus.UserSource{ID: "default", Name: "NexusAuthenticatingRealm"},
-		nexus.UserSource{ID: "LDAP", Name: "LdapRealm"},
+	expected := []models.UserSource{
+		models.UserSource{ID: "default", Name: "NexusAuthenticatingRealm"},
+		models.UserSource{ID: "LDAP", Name: "LdapRealm"},
 	}
 	actual, err := suite.client.SecurityManagement.List()
 	assert.NoError(suite.T(), err)

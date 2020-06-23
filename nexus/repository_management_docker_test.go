@@ -3,15 +3,15 @@ package nexus_test
 import (
 	"github.com/stretchr/testify/assert"
 
-	"github.com/kaizendorks/nexus-go-client/nexus"
+	"github.com/kaizendorks/nexus-go-client/models"
 )
 
 func (suite *NexusClientSuite) TestRepositoryManagementDockerGroup() {
 	hostedRepositoryName := "docker-hosted-test"
-	err := suite.client.RepositoryManagement.CreateDockerHosted(nexus.DockerHostedRepository{
+	err := suite.client.RepositoryManagement.CreateDockerHosted(models.DockerHostedRepository{
 		Name:   hostedRepositoryName,
-		Docker: &nexus.DockerAttributes{},
-		Storage: &nexus.Storage{
+		Docker: &models.DockerAttributes{},
+		Storage: &models.Storage{
 			BlobStoreName: "default",
 			WritePolicy:   "ALLOW_ONCE",
 		},
@@ -20,14 +20,14 @@ func (suite *NexusClientSuite) TestRepositoryManagementDockerGroup() {
 
 	name := "docker-group-test"
 	// Create
-	testRepository := nexus.DockerGroupRepository{
-		Group: &nexus.Group{
+	testRepository := models.DockerGroupRepository{
+		Group: &models.Group{
 			MemberNames: []string{hostedRepositoryName},
 		},
 		Name:   name,
-		Docker: &nexus.DockerAttributes{},
+		Docker: &models.DockerAttributes{},
 		Online: true,
-		Storage: &nexus.Storage{
+		Storage: &models.Storage{
 			BlobStoreName:               "default",
 			StrictContentTypeValidation: true,
 			WritePolicy:                 "ALLOW_ONCE",
@@ -50,14 +50,14 @@ func (suite *NexusClientSuite) TestRepositoryManagementDockerGroup() {
 
 func (suite *NexusClientSuite) TestRepositoryManagementDockerHosted() {
 	name := "docker-hosted-test"
-	testRepository := nexus.DockerHostedRepository{
-		Cleanup: &nexus.Cleanup{
+	testRepository := models.DockerHostedRepository{
+		Cleanup: &models.Cleanup{
 			PolicyNames: []string{"weekly-cleanup"},
 		},
 		Name:   name,
-		Docker: &nexus.DockerAttributes{},
+		Docker: &models.DockerAttributes{},
 		Online: true,
-		Storage: &nexus.Storage{
+		Storage: &models.Storage{
 			BlobStoreName:               "default",
 			StrictContentTypeValidation: true,
 			WritePolicy:                 "ALLOW_ONCE",
@@ -79,28 +79,28 @@ func (suite *NexusClientSuite) TestRepositoryManagementDockerHosted() {
 
 func (suite *NexusClientSuite) TestRepositoryManagementDockerProxy() {
 	name := "docker-proxy-test"
-	testRepository := nexus.DockerProxyRepository{
-		Docker: &nexus.DockerAttributes{},
-		DockerProxy: &nexus.DockerProxyAttributes{
+	testRepository := models.DockerProxyRepository{
+		Docker: &models.DockerAttributes{},
+		DockerProxy: &models.DockerProxyAttributes{
 			IndexType: "REGISTRY",
 		},
-		HTTPClient: &nexus.HTTPClient{
+		HTTPClient: &models.HTTPClient{
 			AutoBlock: true,
 			Blocked:   true,
 		},
 		Name: name,
-		NegativeCache: &nexus.NegativeCache{
+		NegativeCache: &models.NegativeCache{
 			Enabled:    true,
 			TimeToLive: 1440,
 		},
 		Online: true,
-		Proxy: &nexus.Proxy{
+		Proxy: &models.Proxy{
 			ContentMaxAge:  1440,
 			MetadataMaxAge: 1440,
 			RemoteURL:      "http://test",
 		},
 		RoutingRule: "test",
-		Storage: &nexus.Storage{
+		Storage: &models.Storage{
 			BlobStoreName:               "default",
 			StrictContentTypeValidation: true,
 		},

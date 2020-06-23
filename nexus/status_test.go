@@ -6,6 +6,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
+	"github.com/kaizendorks/nexus-go-client/models"
 	"github.com/kaizendorks/nexus-go-client/nexus"
 )
 
@@ -29,17 +30,17 @@ func (suite *MockedClientSuite) TestStatusReadableError() {
 }
 
 func (suite *NexusClientSuite) TestStatusCheck() {
-	expected := map[string]nexus.SystemStatus{
-		"Available CPUs":            nexus.SystemStatus{Healthy: true},
-		"Blob Stores":               nexus.SystemStatus{Healthy: true},
-		"Default Admin Credentials": nexus.SystemStatus{Healthy: false},
-		"DefaultRoleRealm":          nexus.SystemStatus{Healthy: true},
-		"File Descriptors":          nexus.SystemStatus{Healthy: true},
-		"Lifecycle Phase":           nexus.SystemStatus{Healthy: true},
-		"Read-Only Detector":        nexus.SystemStatus{Healthy: true},
-		"Scheduler":                 nexus.SystemStatus{Healthy: true},
-		"Thread Deadlock Detector":  nexus.SystemStatus{Healthy: true},
-		"Transactions":              nexus.SystemStatus{Healthy: true},
+	expected := map[string]models.SystemStatus{
+		"Available CPUs":            models.SystemStatus{Healthy: true},
+		"Blob Stores":               models.SystemStatus{Healthy: true},
+		"Default Admin Credentials": models.SystemStatus{Healthy: false},
+		"DefaultRoleRealm":          models.SystemStatus{Healthy: true},
+		"File Descriptors":          models.SystemStatus{Healthy: true},
+		"Lifecycle Phase":           models.SystemStatus{Healthy: true},
+		"Read-Only Detector":        models.SystemStatus{Healthy: true},
+		"Scheduler":                 models.SystemStatus{Healthy: true},
+		"Thread Deadlock Detector":  models.SystemStatus{Healthy: true},
+		"Transactions":              models.SystemStatus{Healthy: true},
 	}
 
 	actual, err := suite.client.Status.StatusCheck()
@@ -64,7 +65,7 @@ func (suite *MockedClientSuite) TestStatusCheckError() {
 
 	actual, err := mockedClient.Status.StatusCheck()
 	assert.Error(suite.T(), err)
-	assert.Equal(suite.T(), nexus.StatusCheckResponse{}, actual)
+	assert.Equal(suite.T(), models.StatusCheckResponse{}, actual)
 }
 
 func (suite *NexusClientSuite) TestStatusWritable() {

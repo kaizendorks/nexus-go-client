@@ -3,12 +3,12 @@ package nexus_test
 import (
 	"github.com/stretchr/testify/assert"
 
-	"github.com/kaizendorks/nexus-go-client/nexus"
+	"github.com/kaizendorks/nexus-go-client/models"
 )
 
 func (suite *NexusClientSuite) TestSecurityManagementRolesList() {
-	expected := []nexus.RoleResponse{
-		nexus.RoleResponse{
+	expected := []models.RoleResponse{
+		models.RoleResponse{
 			Description: "Administrator Role",
 			ID:          "nx-admin",
 			Name:        "nx-admin",
@@ -16,7 +16,7 @@ func (suite *NexusClientSuite) TestSecurityManagementRolesList() {
 			Roles:       []string{},
 			Source:      "default",
 		},
-		nexus.RoleResponse{
+		models.RoleResponse{
 			Description: "Anonymous Role",
 			ID:          "nx-anonymous",
 			Name:        "nx-anonymous",
@@ -30,28 +30,32 @@ func (suite *NexusClientSuite) TestSecurityManagementRolesList() {
 			Source: "default",
 		},
 	}
-	actual, err := suite.client.SecurityManagementRoles.List()
+	actual, err := suite.client.SecurityManagementRoles.List(models.RoleFilter{})
 	assert.NoError(suite.T(), err)
 	assert.Equal(suite.T(), expected, actual)
 
-	actual, err = suite.client.SecurityManagementRoles.ListFromSource("default")
+	actual, err = suite.client.SecurityManagementRoles.List(models.RoleFilter{
+		Source: "default",
+	})
 	assert.NoError(suite.T(), err)
 	assert.Equal(suite.T(), expected, actual)
 
-	actual, err = suite.client.SecurityManagementRoles.ListFromSource("fake")
+	actual, err = suite.client.SecurityManagementRoles.List(models.RoleFilter{
+		Source: "fake",
+	})
 	assert.Error(suite.T(), err)
 }
 
 func (suite *NexusClientSuite) TestSecurityManagementRole() {
 	id := "test-role"
-	r := nexus.Role{
+	r := models.Role{
 		Description: "Administrator Role",
 		ID:          id,
 		Name:        id,
 		Privileges:  []string{"nx-all"},
 		Roles:       []string{},
 	}
-	expected := nexus.RoleResponse{
+	expected := models.RoleResponse{
 		Description: "Administrator Role",
 		ID:          id,
 		Name:        id,
@@ -65,7 +69,7 @@ func (suite *NexusClientSuite) TestSecurityManagementRole() {
 	assert.NoError(suite.T(), err)
 	assert.Equal(suite.T(), expected, actual)
 
-	_, err = suite.client.SecurityManagementRoles.Create(nexus.Role{})
+	_, err = suite.client.SecurityManagementRoles.Create(models.Role{})
 	assert.Error(suite.T(), err)
 
 	// Update
@@ -75,14 +79,14 @@ func (suite *NexusClientSuite) TestSecurityManagementRole() {
 	assert.NoError(suite.T(), err)
 
 	// Get
-	actual, err = suite.client.SecurityManagementRoles.Get(id)
+	actual, err = suite.client.SecurityManagementRoles.Get(id, models.RoleFilter{})
 	assert.NoError(suite.T(), err)
 	assert.Equal(suite.T(), expected, actual)
 
-	_, err = suite.client.SecurityManagementRoles.Get("fakeid")
+	_, err = suite.client.SecurityManagementRoles.Get("fakeid", models.RoleFilter{})
 	assert.Error(suite.T(), err)
 
-	actual, err = suite.client.SecurityManagementRoles.GetFromSource(id, "default")
+	actual, err = suite.client.SecurityManagementRoles.Get(id, models.RoleFilter{Source: "default"})
 	assert.NoError(suite.T(), err)
 	assert.Equal(suite.T(), expected, actual)
 

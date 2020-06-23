@@ -5,35 +5,16 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+
+	. "github.com/kaizendorks/nexus-go-client/models"
 )
 
-type FileBlobStore struct {
-	// The path to the blobstore contents. This can be an absolute path to anywhere on the system nxrm has access to or it can be a path relative to the sonatype-work directory.
-	Path string `json:"path"`
-
-	// Settings to control the soft quota
-	SoftQuota *SoftQuota `json:"softQuota"`
-}
-
-type FileBlobStoreConfig struct {
-	Name string `json:"name,omitempty"`
-
-	// The path to the blobstore contents. This can be an absolute path to anywhere on the system nxrm has access to or it can be a path relative to the sonatype-work directory.
-	Path string `json:"path,omitempty"`
-
-	// Settings to control the soft quota
-	SoftQuota *SoftQuota `json:"softQuota,omitempty"`
-}
-
 // CreateFileStore create a new file blob store
-// endpoint: POST /beta​/blobstores​/file
-// parameters:
-// 		bs:
-// 			description: set of config options to use when creating the new blob store
-// 			required: false
-// 			schema: "#/definitions/FileBlobStoreApiCreateRequest"
-// responses:
-// 	default: Successful operation
+//	endpoint: POST /beta​/blobstores​/file
+//	parameters:
+// 		bs: set of config options to use when creating the new blob store
+//	responses:
+// 		200: Successful operation
 func (a BlobStoreAPI) CreateFileStore(bs FileBlobStoreConfig) error {
 	path := fmt.Sprintf("beta/blobstores/file")
 
@@ -45,14 +26,11 @@ func (a BlobStoreAPI) CreateFileStore(bs FileBlobStoreConfig) error {
 }
 
 // GetFileStore gets a file blob store configuration by name
-// endpoint: GET /beta​/blobstores​/file​/{name}
-// parameters:
-// 		name
-// 			description: The name of the file blob store to read
-// 			required: true
-// responses:
-// 		200: successful operation
-// 		schema: "#/definitions/FileBlobStoreApiModel"
+//	endpoint: GET /beta​/blobstores​/file​/{name}
+//	parameters:
+// 		blobStoreName: The name of the file blob store to read
+//	responses:
+// 		200: successful operation return FileBlobStore and nil error
 func (a BlobStoreAPI) GetFileStore(blobStoreName string) (FileBlobStore, error) {
 	bs := FileBlobStore{}
 	path := fmt.Sprintf("beta/blobstores/file/%s", blobStoreName)
@@ -67,16 +45,11 @@ func (a BlobStoreAPI) GetFileStore(blobStoreName string) (FileBlobStore, error) 
 }
 
 // UpdateFileStore updates an existing file blob store configuration by name
-// endpoint: ​/beta​/blobstores​/file​/{name}
-// parameters:
-// 		blobStoreName:
-// 			description: The name of the file blob store to update
-// 			required: true
-// 		bs:
-// 			description: The name of the file blob store to updates
-// 			required: false
-// 			schema: "$ref": "#/definitions/FileBlobStoreApiUpdateRequest"
-// responses:
+//	endpoint: ​/beta​/blobstores​/file​/{name}
+//	parameters:
+// 		blobStoreName: The name of the file blob store to update
+// 		bs: FileBlobStore configuration
+//	responses:
 // 		default: successful operation
 func (a BlobStoreAPI) UpdateFileStore(blobStoreName string, bs FileBlobStore) error {
 	path := fmt.Sprintf("beta/blobstores/file/%s", blobStoreName)

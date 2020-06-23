@@ -17,16 +17,15 @@ The most basic usage would be to check if the Nexus server is running and ready 
 Fot this we would start of by passing in a basic ClientConfig to the NewClient constructor, followed by a call to one of the status API endpoints.
 
 client := nexus.NewClient(nexus.ClientConfig{
-  Host:     nexusHost,
-  Username: nexusUsername,
-  Password: nexusPassword,
+	Host:		  nexusHost,
+	Username: nexusUsername,
+	Password: nexusPassword,
 })
 
 err := client.Status.StatusWritable()
 if err != nil {
 	// Report Nexus server is not readable/writable.
 }
-
 
 For control over the HTTP client, add extra options to the ClientConfig.
 Example 1: allowing insecure https.

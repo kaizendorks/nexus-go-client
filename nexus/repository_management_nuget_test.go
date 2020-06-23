@@ -3,14 +3,14 @@ package nexus_test
 import (
 	"github.com/stretchr/testify/assert"
 
-	"github.com/kaizendorks/nexus-go-client/nexus"
+	"github.com/kaizendorks/nexus-go-client/models"
 )
 
 func (suite *NexusClientSuite) TestRepositoryManagementNugetGroup() {
 	hostedRepositoryName := "nuget-hosted-test"
-	err := suite.client.RepositoryManagement.CreateNugetHosted(nexus.NugetHostedRepository{
+	err := suite.client.RepositoryManagement.CreateNugetHosted(models.NugetHostedRepository{
 		Name: hostedRepositoryName,
-		Storage: &nexus.Storage{
+		Storage: &models.Storage{
 			BlobStoreName: "default",
 			WritePolicy:   "ALLOW_ONCE",
 		},
@@ -19,13 +19,13 @@ func (suite *NexusClientSuite) TestRepositoryManagementNugetGroup() {
 
 	name := "nuget-group-test"
 	// Create
-	testRepository := nexus.NugetGroupRepository{
-		Group: &nexus.Group{
+	testRepository := models.NugetGroupRepository{
+		Group: &models.Group{
 			MemberNames: []string{hostedRepositoryName},
 		},
 		Name:   name,
 		Online: true,
-		Storage: &nexus.Storage{
+		Storage: &models.Storage{
 			BlobStoreName:               "default",
 			StrictContentTypeValidation: true,
 			WritePolicy:                 "ALLOW_ONCE",
@@ -48,13 +48,13 @@ func (suite *NexusClientSuite) TestRepositoryManagementNugetGroup() {
 
 func (suite *NexusClientSuite) TestRepositoryManagementNugetHosted() {
 	name := "nuget-hosted-test"
-	testRepository := nexus.NugetHostedRepository{
-		Cleanup: &nexus.Cleanup{
+	testRepository := models.NugetHostedRepository{
+		Cleanup: &models.Cleanup{
 			PolicyNames: []string{"weekly-cleanup"},
 		},
 		Name:   name,
 		Online: true,
-		Storage: &nexus.Storage{
+		Storage: &models.Storage{
 			BlobStoreName:               "default",
 			StrictContentTypeValidation: true,
 			WritePolicy:                 "ALLOW_ONCE",
@@ -76,27 +76,27 @@ func (suite *NexusClientSuite) TestRepositoryManagementNugetHosted() {
 
 func (suite *NexusClientSuite) TestRepositoryManagementNugetProxy() {
 	name := "nuget-proxy-test"
-	testRepository := nexus.NugetProxyRepository{
-		NugetProxy: &nexus.NugetProxyAttributes{
+	testRepository := models.NugetProxyRepository{
+		NugetProxy: &models.NugetProxyAttributes{
 			QueryCacheItemMaxAge: 12,
 		},
-		HTTPClient: &nexus.HTTPClient{
+		HTTPClient: &models.HTTPClient{
 			AutoBlock: true,
 			Blocked:   true,
 		},
 		Name: name,
-		NegativeCache: &nexus.NegativeCache{
+		NegativeCache: &models.NegativeCache{
 			Enabled:    true,
 			TimeToLive: 1440,
 		},
 		Online: true,
-		Proxy: &nexus.Proxy{
+		Proxy: &models.Proxy{
 			ContentMaxAge:  1440,
 			MetadataMaxAge: 1440,
 			RemoteURL:      "http://test",
 		},
 		RoutingRule: "test",
-		Storage: &nexus.Storage{
+		Storage: &models.Storage{
 			BlobStoreName:               "default",
 			StrictContentTypeValidation: true,
 		},

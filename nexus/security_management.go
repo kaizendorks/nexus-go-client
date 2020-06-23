@@ -4,18 +4,15 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+
+	. "github.com/kaizendorks/nexus-go-client/models"
 )
 
 type SecurityManagementAPI api
 
-type UserSource struct {
-	ID   string `json:"id,omitempty"`
-	Name string `json:"name,omitempty"`
-}
-
 // ListUserSources retrieves a list of the available user sources.
-// api endpoint: GET ​/beta/security​/user-sources
-// responses:
+//	api endpoint: GET ​/beta/security​/user-sources
+//	responses:
 // 		200: successful operation returns UserSource slice"
 // 		403: The user does not have permission to perform the operation.
 func (a SecurityManagementAPI) List() ([]UserSource, error) {

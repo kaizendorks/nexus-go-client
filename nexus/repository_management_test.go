@@ -6,18 +6,19 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
+	"github.com/kaizendorks/nexus-go-client/models"
 	"github.com/kaizendorks/nexus-go-client/nexus"
 )
 
 func (suite *NexusClientSuite) TestRepositoryManagementList() {
-	expected := []nexus.Repository{
-		nexus.Repository{Format: "maven2", Name: "maven-snapshots", Online: true, Type: "hosted", URL: "http://nexus:8081/repository/maven-snapshots"},
-		nexus.Repository{Format: "maven2", Name: "maven-central", Online: true, Type: "proxy", URL: "http://nexus:8081/repository/maven-central"},
-		nexus.Repository{Format: "nuget", Name: "nuget-group", Online: true, Type: "group", URL: "http://nexus:8081/repository/nuget-group"},
-		nexus.Repository{Format: "nuget", Name: "nuget.org-proxy", Online: true, Type: "proxy", URL: "http://nexus:8081/repository/nuget.org-proxy"},
-		nexus.Repository{Format: "maven2", Name: "maven-releases", Online: true, Type: "hosted", URL: "http://nexus:8081/repository/maven-releases"},
-		nexus.Repository{Format: "nuget", Name: "nuget-hosted", Online: true, Type: "hosted", URL: "http://nexus:8081/repository/nuget-hosted"},
-		nexus.Repository{Format: "maven2", Name: "maven-public", Online: true, Type: "group", URL: "http://nexus:8081/repository/maven-public"},
+	expected := []models.Repository{
+		models.Repository{Format: "maven2", Name: "maven-snapshots", Online: true, Type: "hosted", URL: "http://nexus:8081/repository/maven-snapshots"},
+		models.Repository{Format: "maven2", Name: "maven-central", Online: true, Type: "proxy", URL: "http://nexus:8081/repository/maven-central"},
+		models.Repository{Format: "nuget", Name: "nuget-group", Online: true, Type: "group", URL: "http://nexus:8081/repository/nuget-group"},
+		models.Repository{Format: "nuget", Name: "nuget.org-proxy", Online: true, Type: "proxy", URL: "http://nexus:8081/repository/nuget.org-proxy"},
+		models.Repository{Format: "maven2", Name: "maven-releases", Online: true, Type: "hosted", URL: "http://nexus:8081/repository/maven-releases"},
+		models.Repository{Format: "nuget", Name: "nuget-hosted", Online: true, Type: "hosted", URL: "http://nexus:8081/repository/nuget-hosted"},
+		models.Repository{Format: "maven2", Name: "maven-public", Online: true, Type: "group", URL: "http://nexus:8081/repository/maven-public"},
 	}
 	actual, err := suite.client.RepositoryManagement.List()
 	assert.NoError(suite.T(), err)

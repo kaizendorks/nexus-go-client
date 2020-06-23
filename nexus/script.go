@@ -5,27 +5,15 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+
+	. "github.com/kaizendorks/nexus-go-client/models"
 )
 
 type ScriptAPI api
 
-type Script struct {
-	Content string `json:"content,omitempty"`
-
-	// Pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-	Name string `json:"name,omitempty"`
-
-	Type string `json:"type,omitempty"`
-}
-
-type ScriptResult struct {
-	Name   string `json:"name,omitempty"`
-	Result string `json:"result,omitempty"`
-}
-
 // List all stored scripts
-// api endpoint: GET /v1​/script
-// responses:
+//	api endpoint: GET /v1​/script
+//	responses:
 // 		200: successful operation returns a Script slice and nil error
 func (a ScriptAPI) List() ([]Script, error) {
 	ss := []Script{}
@@ -41,11 +29,11 @@ func (a ScriptAPI) List() ([]Script, error) {
 }
 
 // Create adds a new script
-// api endpoint: POST /v1​/script
+//	api endpoint: POST /v1​/script
 // summary: Add a new script
-// parameters:
+//	parameters:
 // 		s: Script object with name, content and type
-// responses:
+//	responses:
 // 		204: Script was added
 // 		410: Script creation is disabled
 func (a ScriptAPI) Create(s Script) error {
@@ -59,10 +47,10 @@ func (a ScriptAPI) Create(s Script) error {
 }
 
 // Get fetches script by name
-// api endpoint: GET /v1​/script​/{name}
-// parameters:
+//	api endpoint: GET /v1​/script​/{name}
+//	parameters:
 // 		scriptName: The name of the script.
-// responses:
+//	responses:
 // 		200: successful operation returns Script object and nil error.
 // 		404: No script with the specified name
 func (a ScriptAPI) Get(scriptName string) (Script, error) {
@@ -79,10 +67,10 @@ func (a ScriptAPI) Get(scriptName string) (Script, error) {
 }
 
 // Update updates the contents of an existing script by name.
-// api endpoint: PUT /v1​/script​/{name}
-// parameters:
+//	api endpoint: PUT /v1​/script​/{name}
+//	parameters:
 // 		s: Script object
-// responses:
+//	responses:
 // 		204: Script was updated
 // 		404: No script with the specified name
 // 		410: Script updating is disabled
@@ -97,10 +85,10 @@ func (a ScriptAPI) Update(s Script) error {
 }
 
 // Delete existing script by name.
-// api endpoint: DELETE /v1​/script​/{name}
-// parameters:
+//	api endpoint: DELETE /v1​/script​/{name}
+//	parameters:
 // 		scriptName: The name of the script to delete.
-// responses:
+//	responses:
 // 		204: Script was deleted
 // 		404: No script with the specified name
 func (a ScriptAPI) Delete(scriptName string) error {
@@ -111,11 +99,11 @@ func (a ScriptAPI) Delete(scriptName string) error {
 }
 
 // Run executes an existing script
-// api endpoint: PUT /v1​/script​/{name}/run
-// parameters:
+//	api endpoint: PUT /v1​/script​/{name}/run
+//	parameters:
 // 		scriptName: the name of the script to execute.
 // 		params: an optional key/value map containing string params (use nil for script without params)
-// responses:
+//	responses:
 // 		200: successful operation returns ScriptResult object and nil error
 // 		404: No script with the specified name
 // 		500: Script execution failed with exception

@@ -4,43 +4,27 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+
+	. "github.com/kaizendorks/nexus-go-client/models"
 )
 
 type AssetsAPI api
 
-type Asset struct {
-	Checksum    map[string]string `json:"checksum"`
-	DownloadURL string            `json:"downloadUrl"`
-	Format      string            `json:"format"`
-	ID          string            `json:"id"`
-	Path        string            `json:"path"`
-	Repository  string            `json:"repository"`
-}
-
-type AssetListResponse struct {
-	Items             []*Asset `json:"items"`
-	ContinuationToken string   `json:"continuationToken"`
-}
-
 // List assets
-// api endpoint: GET /v1​/assets
-// parameters:
-// 		continuationToken
-// 			description: A token returned by a prior request. If present, the next page of results are returned
-// 			required: false
-// 		repository
-// 			description: Repository from which you would like to retrieve assets.
-// 			required: true
-// responses:
+//	api endpoint: GET /v1​/assets
+//	parameters:
+// 		af: AssetFilter object consisting of options to filter the results by.
+//	responses:
 // 		200: Successful operation returns AssetListResponse and nil error
 // 		403: Insufficient permissions to list assets
-// 		422: Parameter 'repository' is required (this methods should never get into this state.)
-func (a AssetsAPI) List(repository, continuationToken string) (*AssetListResponse, error) {
-	assetResp := &AssetListResponse{}
-	path := fmt.Sprintf("v1/assets?repository=%s", repository)
-	if continuationToken != "" {
-		path = fmt.Sprintf("%s&%s", path, repository)
+// 		422: Parameter 'repository' is required (this method should never get into this state when using the go client.)
+func (a AssetsAPI) List(af AssetFilter) (*AssetListResponse, error) {
+	path := fmt.Sprintf("v1/assets?repository=%s", af.Repository)
+	if af.ContinuationToken != "" {
+		path = fmt.Sprintf("%s&%s", path, af.ContinuationToken)
 	}
+
+	assetResp := &AssetListResponse{}
 
 	resp, err := a.client.sendRequest(http.MethodGet, path, nil, nil)
 	if err != nil {
@@ -51,12 +35,10 @@ func (a AssetsAPI) List(repository, continuationToken string) (*AssetListRespons
 }
 
 // Get a single asset
-// endpoint: GET /v1​/assets​/{id}
-// parameters:
-// 		assetId:
-//    	description: ID of the asset to get
-//    	required: true
-// 	responses:
+//	endpoint: GET /v1​/assets​/{id}
+//	parameters:
+//		assetId: ID of the asset to get
+//	responses:
 // 		200: Successful operation returns Asset and nil error
 // 		403: Insufficient permissions to get asset
 // 		404: Asset not found
@@ -75,12 +57,10 @@ func (a AssetsAPI) Get(assetId string) (*Asset, error) {
 }
 
 // Delete a single asset
-// endpoint: DELETE /v1​/assets​/{id}
-// parameters:
-// 		assetId:
-//    	description: ID of the asset to delete
-//    	required: true
-// responses:
+//	endpoint: DELETE /v1​/assets​/{id}
+// 	parameters:
+// 		assetId: ID of the asset to delete
+// 	responses:
 // 		204: Asset was successfully deleted
 // 		403: Insufficient permissions to delete asset
 // 		404: Asset not found

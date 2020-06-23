@@ -5,57 +5,15 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+
+	. "github.com/kaizendorks/nexus-go-client/models"
 )
 
-type MavenHostedRepository struct {
-	Cleanup *Cleanup         `json:"cleanup,omitempty"`
-	Maven   *MavenAttributes `json:"maven"`
-
-	// A unique identifier for this repository
-	// Pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-	Name string `json:"name"`
-
-	// Whether this repository accepts incoming requests
-	Online bool `json:"online"`
-
-	Storage *Storage `json:"storage"`
-}
-
-type MavenAttributes struct {
-	// Validate that all paths are maven artifact or metadata paths
-	// Enum: [STRICT PERMISSIVE]
-	LayoutPolicy string `json:"layoutPolicy,omitempty"`
-
-	// What type of artifacts does this repository store?
-	// Enum: [RELEASE SNAPSHOT MIXED]
-	VersionPolicy string `json:"versionPolicy,omitempty"`
-}
-
-type MavenProxyRepository struct {
-	Cleanup    *Cleanup         `json:"cleanup,omitempty"`
-	HTTPClient *HTTPClient      `json:"httpClient"`
-	Maven      *MavenAttributes `json:"maven"`
-
-	// A unique identifier for this repository
-	// Pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-	Name string `json:"name"`
-
-	NegativeCache *NegativeCache `json:"negativeCache"`
-
-	// Whether this repository accepts incoming requests
-	Online bool `json:"online"`
-
-	Proxy       *Proxy   `json:"proxy"`
-	RoutingRule string   `json:"routingRule,omitempty"`
-	Storage     *Storage `json:"storage"`
-}
-
 // CreateMavenHosted creates Maven hosted repository
-// endpoint: POST ​/beta​/repositories​/maven​/hosted
-// parameters:
-// 		r:
-// 			description: MavenHostedRepository config
-// responses:
+//	endpoint: POST ​/beta​/repositories​/maven​/hosted
+//	parameters:
+// 		r: MavenHostedRepository config
+//	responses:
 // 		201: Repository created
 // 		401: Authentication required
 // 		403: Insufficient permissions
@@ -70,13 +28,11 @@ func (a RepositoryManagementAPI) CreateMavenHosted(r MavenHostedRepository) erro
 }
 
 // UpdateMavenHosted updates Maven hosted repository
-// endpoint: PUT ​/beta​/repositories​/maven​/hosted​/{repositoryName}
-// parameters:
-// 		repositoryName:
-// 			description: Name of the repository to update
-// 		r:
-// 			description: MavenHostedRepository config
-// responses:
+//	endpoint: PUT ​/beta​/repositories​/maven​/hosted​/{repositoryName}
+//	parameters:
+// 		repositoryName: Name of the repository to update
+// 		r: MavenHostedRepository config
+//	responses:
 // 		204: Repository updated
 // 		401: Authentication required
 // 		403: Insufficient permissions
@@ -92,11 +48,10 @@ func (a RepositoryManagementAPI) UpdateMavenHosted(repositoryName string, r Mave
 }
 
 // CreateMavenProxy creates Maven proxy repository
-// endpoint: POST /beta​/repositories​/maven​/proxy
-// parameters:
-// 		r:
-// 			description: MavenProxyRepository config
-// responses:
+//	endpoint: POST /beta​/repositories​/maven​/proxy
+//	parameters:
+// 		r: MavenProxyRepository config
+//	responses:
 // 		201: Repository created
 // 		401: Authentication required
 // 		403: Insufficient permissions
@@ -111,13 +66,11 @@ func (a RepositoryManagementAPI) CreateMavenProxy(r MavenProxyRepository) error 
 }
 
 // UpdateMavenProxy updates Maven proxy repository
-// endpoint: PUT ​/beta​/repositories​/maven​/proxy​/{repositoryName}
-// parameters:
-// 		repositoryName:
-// 			description: Name of the repository to update
-// 		r:
-// 			description: MavenProxyRepository config
-// responses:
+//	endpoint: PUT ​/beta​/repositories​/maven​/proxy​/{repositoryName}
+//	parameters:
+// 		repositoryName: Name of the repository to update
+// 		r: MavenProxyRepository config
+//	responses:
 //		204: Repository updated
 //		401: Authentication required
 // 		403: Insufficient permissions

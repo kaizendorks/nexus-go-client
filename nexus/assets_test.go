@@ -6,24 +6,30 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
+	"github.com/kaizendorks/nexus-go-client/models"
 	"github.com/kaizendorks/nexus-go-client/nexus"
 )
 
 func (suite *NexusClientSuite) TestAssetsList() {
-	assets, err := suite.client.Assets.List("maven-central", "")
+	assets, err := suite.client.Assets.List(models.AssetFilter{
+		Repository: "maven-central",
+	})
 
 	assert.NoError(suite.T(), err)
-	assert.ElementsMatch(suite.T(), assets.Items, []nexus.Asset{})
+	assert.ElementsMatch(suite.T(), assets.Items, []models.Asset{})
 	assert.Empty(suite.T(), assets.ContinuationToken)
 
-	_, err = suite.client.Assets.List("invalid", "fakeToken")
+	_, err = suite.client.Assets.List(models.AssetFilter{
+		Repository:        "invalid",
+		ContinuationToken: "fake",
+	})
 
 	assert.Error(suite.T(), err)
 	assert.Equal(suite.T(), "404 Not Found", err.Error())
 }
 
 func (suite *MockedClientSuite) TestAssetsGet() {
-	expected := &nexus.Asset{
+	expected := &models.Asset{
 		Checksum:    map[string]string{"sha1": "c2eabea90b4b10ec5a26de63ea7516f38d805026", "sha256": "8415f3081edf1ad04b0333c18f5a2cc23e647aa67d5958a1b1b613a20943c6c6"},
 		DownloadURL: "https://testurl/repository/chips-docker-registry/v2/-/blobs/sha256:8415f3081edf1ad04b0333c18f5a2cc23e647aa67d5958a1b1b613a20943c6c6",
 		Format:      "docker",

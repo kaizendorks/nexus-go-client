@@ -6,6 +6,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
+	"github.com/kaizendorks/nexus-go-client/models"
 	"github.com/kaizendorks/nexus-go-client/nexus"
 )
 
@@ -40,7 +41,7 @@ func (suite *NexusClientSuite) TestBlobStoreDeleteError() {
 }
 
 func (suite *NexusClientSuite) TestBlobStoreGetQuotaStatus() {
-	expected := nexus.QuotaStatusResponse{
+	expected := models.QuotaStatusResponse{
 		BlobStoreName: "default",
 		IsViolation:   false,
 		Message:       "Blob store default has no quota",

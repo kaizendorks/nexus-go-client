@@ -3,14 +3,14 @@ package nexus_test
 import (
 	"github.com/stretchr/testify/assert"
 
-	"github.com/kaizendorks/nexus-go-client/nexus"
+	"github.com/kaizendorks/nexus-go-client/models"
 )
 
 func (suite *NexusClientSuite) TestRepositoryManagementBowerGroup() {
 	hostedRepositoryName := "bower-hosted-test"
-	err := suite.client.RepositoryManagement.CreateBowerHosted(nexus.BowerHostedRepository{
+	err := suite.client.RepositoryManagement.CreateBowerHosted(models.BowerHostedRepository{
 		Name: hostedRepositoryName,
-		Storage: &nexus.Storage{
+		Storage: &models.Storage{
 			BlobStoreName: "default",
 			WritePolicy:   "ALLOW_ONCE",
 		},
@@ -19,13 +19,13 @@ func (suite *NexusClientSuite) TestRepositoryManagementBowerGroup() {
 
 	name := "bower-group-test"
 	// Create
-	testRepository := nexus.BowerGroupRepository{
-		Group: &nexus.Group{
+	testRepository := models.BowerGroupRepository{
+		Group: &models.Group{
 			MemberNames: []string{hostedRepositoryName},
 		},
 		Name:   name,
 		Online: true,
-		Storage: &nexus.Storage{
+		Storage: &models.Storage{
 			BlobStoreName:               "default",
 			StrictContentTypeValidation: true,
 			WritePolicy:                 "ALLOW_ONCE",
@@ -48,13 +48,13 @@ func (suite *NexusClientSuite) TestRepositoryManagementBowerGroup() {
 
 func (suite *NexusClientSuite) TestRepositoryManagementBowerHosted() {
 	name := "bower-hosted-test"
-	testRepository := nexus.BowerHostedRepository{
-		Cleanup: &nexus.Cleanup{
+	testRepository := models.BowerHostedRepository{
+		Cleanup: &models.Cleanup{
 			PolicyNames: []string{"weekly-cleanup"},
 		},
 		Name:   name,
 		Online: true,
-		Storage: &nexus.Storage{
+		Storage: &models.Storage{
 			BlobStoreName:               "default",
 			StrictContentTypeValidation: true,
 			WritePolicy:                 "ALLOW_ONCE",
@@ -76,27 +76,27 @@ func (suite *NexusClientSuite) TestRepositoryManagementBowerHosted() {
 
 func (suite *NexusClientSuite) TestRepositoryManagementBowerProxy() {
 	name := "bower-proxy-test"
-	testRepository := nexus.BowerProxyRepository{
-		Bower: &nexus.BowerProxyAttributes{
+	testRepository := models.BowerProxyRepository{
+		Bower: &models.BowerProxyAttributes{
 			RewritePackageUrls: false,
 		},
-		HTTPClient: &nexus.HTTPClient{
+		HTTPClient: &models.HTTPClient{
 			AutoBlock: true,
 			Blocked:   true,
 		},
 		Name: name,
-		NegativeCache: &nexus.NegativeCache{
+		NegativeCache: &models.NegativeCache{
 			Enabled:    true,
 			TimeToLive: 1440,
 		},
 		Online: true,
-		Proxy: &nexus.Proxy{
+		Proxy: &models.Proxy{
 			ContentMaxAge:  1440,
 			MetadataMaxAge: 1440,
 			RemoteURL:      "http://test",
 		},
 		RoutingRule: "test",
-		Storage: &nexus.Storage{
+		Storage: &models.Storage{
 			BlobStoreName:               "default",
 			StrictContentTypeValidation: true,
 		},
