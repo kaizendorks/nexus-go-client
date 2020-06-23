@@ -17,7 +17,7 @@ func (suite *NexusClientSuite) TestSecurityManagementUserSource() {
 	}
 	actual, err := suite.client.SecurityManagement.List()
 	assert.NoError(suite.T(), err)
-	assert.Equal(suite.T(), expected, actual)
+	assert.ElementsMatch(suite.T(), expected, actual)
 }
 
 func (suite *MockedClientSuite) TestSecurityManagementUserSourceError() {

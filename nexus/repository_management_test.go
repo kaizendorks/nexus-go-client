@@ -22,7 +22,7 @@ func (suite *NexusClientSuite) TestRepositoryManagementList() {
 	}
 	actual, err := suite.client.RepositoryManagement.List()
 	assert.NoError(suite.T(), err)
-	assert.Equal(suite.T(), expected, actual)
+	assert.ElementsMatch(suite.T(), expected, actual)
 }
 
 func (suite *MockedClientSuite) TestRepositoryManagementListError() {

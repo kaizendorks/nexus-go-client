@@ -32,13 +32,13 @@ func (suite *NexusClientSuite) TestSecurityManagementRolesList() {
 	}
 	actual, err := suite.client.SecurityManagementRoles.List(models.RoleFilter{})
 	assert.NoError(suite.T(), err)
-	assert.Equal(suite.T(), expected, actual)
+	assert.ElementsMatch(suite.T(), expected, actual)
 
 	actual, err = suite.client.SecurityManagementRoles.List(models.RoleFilter{
 		Source: "default",
 	})
 	assert.NoError(suite.T(), err)
-	assert.Equal(suite.T(), expected, actual)
+	assert.ElementsMatch(suite.T(), expected, actual)
 
 	actual, err = suite.client.SecurityManagementRoles.List(models.RoleFilter{
 		Source: "fake",

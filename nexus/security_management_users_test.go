@@ -26,11 +26,11 @@ func (suite *NexusClientSuite) TestSecurityManagementUsersList() {
 	}
 	actual, err := suite.client.SecurityManagementUsers.List(models.UserFilter{UserID: "ad"})
 	assert.NoError(suite.T(), err)
-	assert.Equal(suite.T(), expected, actual)
+	assert.ElementsMatch(suite.T(), expected, actual)
 
 	actual, err = suite.client.SecurityManagementUsers.List(models.UserFilter{UserID: "ad", Source: "default"})
 	assert.NoError(suite.T(), err)
-	assert.Equal(suite.T(), expected, actual)
+	assert.ElementsMatch(suite.T(), expected, actual)
 
 	actual, err = suite.client.SecurityManagementUsers.List(models.UserFilter{Source: "default"})
 	assert.NoError(suite.T(), err)

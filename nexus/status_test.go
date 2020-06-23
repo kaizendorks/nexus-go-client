@@ -31,7 +31,7 @@ func (suite *MockedClientSuite) TestStatusReadableError() {
 
 func (suite *NexusClientSuite) TestStatusCheck() {
 	expected := map[string]models.SystemStatus{
-		"Available CPUs":            models.SystemStatus{Healthy: true},
+		"Available CPUs":            models.SystemStatus{Healthy: false},
 		"Blob Stores":               models.SystemStatus{Healthy: true},
 		"Default Admin Credentials": models.SystemStatus{Healthy: false},
 		"DefaultRoleRealm":          models.SystemStatus{Healthy: true},
