@@ -9,7 +9,7 @@ As the name suggests this is a minimal Nexus API client written in go for intera
 
 It does not implement any extra logic other than the one supported by the official Nexus API (its more like a proxy that just passes things back and forward), leaving it up to the users to handle advanced logic. This reduces the amount of code that is not under the user's control, in addition to making this library simpler and easier to keep it in sync with the Nexus APIs.
 
-For the reasons mentioned above and the fact that the Nexus APIs seem to still be in their infancy but evolving at a very fast pace, we have decided to not do anything fancy for re-using code and instead created an API object with matching names (even tho this meant having some long fuction names) to the Nexus API groups. The API pbjects can be accessed via the nexus client, and in turn provide acces to the group APIs E.g:
+For the reasons mentioned above and the fact that the Nexus APIs seem to still be in their infancy but evolving at a very fast pace, we have decided to not do anything fancy for re-using code and instead created an API object with matching names (even tho this meant having some long fuction names) to the Nexus API groups. The API objects can be accessed via the nexus client, and in turn provide acces to the group APIs E.g:
 	Assets
 	...
 	Repositories
