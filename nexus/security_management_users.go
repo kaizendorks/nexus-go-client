@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strings"
 
 	. "github.com/kaizendorks/nexus-go-client/models"
 )
@@ -12,7 +13,7 @@ import (
 type SecurityManagementUsersAPI api
 
 // List retrieves a list of all the existing users. Note if the source is not 'default' the response is limited to 100 users.
-//	api endpoint: GET ​/beta/security/users
+//	api endpoint: GET /beta/security/users
 //	parameters:
 //		uf: UserFilter object consisting of options to filter the results by.
 //	responses:
@@ -91,41 +92,22 @@ func (a SecurityManagementUsersAPI) Delete(id string) error {
 	return err
 }
 
-// put:
-//		 summary: Change a user's password.
-//		 parameters:
-//		 - userId
-//			 description: The userid the request should apply to.
-//			 required: true
-//			 type: string
-//		 - body
-//			 description: The new password to use.
-//			 required: false
-//			 type: string
-//		 responses:
-//			 400: Password was not supplied in the body of the request
-//			 403: The user does not have permission to perform the operation.
-//			 404: User not found in the system.
-
 // ChangePassword change an existing user's password.
 //	api endpoint: /beta/security/users/{id}/change-password
 //	parameters:
 // 		id: The userId of the user to delete
-// 		p: The new password to use.
+// 		newPassword: The new password to use.
 //	responses:
 // 		400: Password was not supplied in the body of the request
 // 		403: The user does not have permission to perform the operation.
 // 		404: User not found
-func (a SecurityManagementUsersAPI) ChangePassword(id, p string) error {
+func (a SecurityManagementUsersAPI) ChangePassword(id, newPassword string) error {
 	path := fmt.Sprintf("beta/security/users/%s/change-password", id)
-
-	b := new(bytes.Buffer)
-	json.NewEncoder(b).Encode(p)
 
 	headers := map[string]string{
 		"Content-Type": "text/plain",
 	}
 
-	_, err := a.client.sendRequest(http.MethodPut, path, b, headers)
+	_, err := a.client.sendRequest(http.MethodPut, path, strings.NewReader(newPassword), headers)
 	return err
 }
