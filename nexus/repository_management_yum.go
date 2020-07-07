@@ -10,7 +10,7 @@ import (
 )
 
 // CreateYUMHosted create YUM hosted repository
-//	endpoint: POST ​/beta​/repositories​/yum​/hosted
+//	endpoint: POST /beta/repositories/yum/hosted
 //	parameters:
 // 		r: YUMHostedRepository config
 //	responses:
@@ -28,7 +28,7 @@ func (a RepositoryManagementAPI) CreateYUMHosted(r YUMHostedRepository) error {
 }
 
 // UpdateYUMHosted updates YUM hosted repository
-//	endpoint: PUT ​/beta​/repositories​/yum​/hosted​/{repositoryName}
+//	endpoint: PUT /beta/repositories/yum/hosted/{repositoryName}
 //	parameters:
 // 		r: YUMHostedRepository config
 // 		repositoryName: Name of the repository to update

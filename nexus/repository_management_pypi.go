@@ -10,7 +10,7 @@ import (
 )
 
 // CreatePyPiGroup creates PyPi group repository
-//	endpoint: POST ​/beta​/repositories​/pypi​/group
+//	endpoint: POST /beta/repositories/pypi/group
 //	parameters:
 // 		r: PyPiGroupRepository config
 //	responses:
@@ -28,7 +28,7 @@ func (a RepositoryManagementAPI) CreatePyPiGroup(r PyPiGroupRepository) error {
 }
 
 // UpdatePyPiGroup updates PyPi group repository
-//	endpoint: PUT ​/beta​/repositories​/pypi​/group​/{repositoryName}
+//	endpoint: PUT /beta/repositories/pypi/group/{repositoryName}
 //	parameters:
 // 		r: PyPiGroupRepository config
 // 		repositoryName: Name of the repository to update
@@ -48,7 +48,7 @@ func (a RepositoryManagementAPI) UpdatePyPiGroup(repositoryName string, r PyPiGr
 }
 
 // CreatePyPiHosted create PyPi hosted repository
-//	endpoint: POST ​/beta​/repositories​/pypi​/hosted
+//	endpoint: POST /beta/repositories/pypi/hosted
 //	parameters:
 // 		r: PyPiHostedRepository config
 //	responses:
@@ -66,7 +66,7 @@ func (a RepositoryManagementAPI) CreatePyPiHosted(r PyPiHostedRepository) error 
 }
 
 // UpdatePyPiHosted updates PyPi hosted repository
-//	endpoint: PUT ​/beta​/repositories​/pypi​/hosted​/{repositoryName}
+//	endpoint: PUT /beta/repositories/pypi/hosted/{repositoryName}
 //	parameters:
 // 		r: PyPiHostedRepository config
 // 		repositoryName: Name of the repository to update
@@ -86,7 +86,7 @@ func (a RepositoryManagementAPI) UpdatePyPiHosted(repositoryName string, r PyPiH
 }
 
 // CreatePyPiProxy creates PyPi proxy repository
-//	endpoint: POST ​/beta​/repositories​/pypi​/proxy
+//	endpoint: POST /beta/repositories/pypi/proxy
 //	parameters:
 // 		r: PyPiProxyRepository config
 //	responses:
@@ -104,7 +104,7 @@ func (a RepositoryManagementAPI) CreatePyPiProxy(r PyPiProxyRepository) error {
 }
 
 // UpdatePyPiProxy updates PyPi proxy repository
-//	endpoint: PUT ​/beta​/repositories​/pypi​/proxy​/{repositoryName}
+//	endpoint: PUT /beta/repositories/pypi/proxy/{repositoryName}
 //	parameters:
 // 		r: PyPiProxyRepository config
 // 		repositoryName: Name of the repository to update

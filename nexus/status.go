@@ -11,7 +11,7 @@ import (
 type StatusAPI api
 
 // Status health check endpoint that validates if the server can respond to read requests
-//	api endpoint: GET /v1​/status
+//	api endpoint: GET /v1/status
 //	responses:
 // 		200: Available to service requests returns nil error
 // 		503: Unavailable to service requests
@@ -39,7 +39,7 @@ func (a StatusAPI) StatusCheck() (StatusCheckResponse, error) {
 }
 
 // StatusWritable check endpoint that validates server can respond to read and write requests
-//	api endpoint: GET /v1​/status/writable
+//	api endpoint: GET /v1/status/writable
 //	responses:
 // 		200: Available to service requests returns nil error
 // 		503: Unavailable to service requests

@@ -10,7 +10,7 @@ import (
 )
 
 // CreateAPTHosted creates APT hosted repository
-//	endpoint: POST ​/beta​/repositories​/apt​/hosted
+//	endpoint: POST /beta/repositories/apt/hosted
 //	parameters:
 // 		r: APTHostedRepository config
 //	responses:
@@ -28,7 +28,7 @@ func (a RepositoryManagementAPI) CreateAPTHosted(r APTHostedRepository) error {
 }
 
 // UpdateAPTHosted updates APT hosted repository
-//	endpoint: PUT ​/beta​/repositories​/apt​/hosted​/{repositoryName}
+//	endpoint: PUT /beta/repositories/apt/hosted/{repositoryName}
 //	parameters:
 // 		repositoryName: Name of the repository to update
 // 		r: APTHostedRepository config
@@ -48,7 +48,7 @@ func (a RepositoryManagementAPI) UpdateAPTHosted(repositoryName string, r APTHos
 }
 
 // CreateAPTProxy creates APT proxy repository
-//	endpoint: POST /beta​/repositories​/apt​/proxy
+//	endpoint: POST /beta/repositories/apt/proxy
 //	parameters:
 // 		r: APTProxyRepository config
 //	responses:
@@ -66,7 +66,7 @@ func (a RepositoryManagementAPI) CreateAPTProxy(r APTProxyRepository) error {
 }
 
 // UpdateAPTProxy updates APT proxy repository
-//	endpoint: PUT ​/beta​/repositories​/apt​/proxy​/{repositoryName}
+//	endpoint: PUT /beta/repositories/apt/proxy/{repositoryName}
 //	parameters:
 // 		repositoryName: Name of the repository to update
 // 		r: APTProxyRepository config

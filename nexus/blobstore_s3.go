@@ -10,7 +10,7 @@ package nexus
 // )
 
 // CreateS3Store creates an S3 blob store
-//	api endpoint: POST ​/beta​/blobstores​/s3
+//	api endpoint: POST /beta/blobstores/s3
 //	parameters:
 // 		bs: S3BlobStore config object.
 //	responses:
@@ -28,7 +28,7 @@ package nexus
 // }
 
 // GetS3Store fetch a S3 blob store configuration
-//	api endpoint: GET ​/beta​/blobstores​/s3​/{name}
+//	api endpoint: GET /beta/blobstores/s3/{name}
 //	parameters:
 // 		blobStoreName: Name of the blob store configuration to fetch
 //	responses:
@@ -50,7 +50,7 @@ package nexus
 // }
 
 // UpdateS3Store updates an S3 blob store configuration
-//	api endpoint: PUT ​/beta​/blobstores​/s3​/{name}
+//	api endpoint: PUT /beta/blobstores/s3/{name}
 //	parameters:
 // 		bs: S3BlobStore config object
 // 		blobStoreName: Name of the blob store to update

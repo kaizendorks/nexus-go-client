@@ -11,7 +11,7 @@ import (
 type RepositoryManagementAPI api
 
 // List returns the list of repositories
-//	api endpoint: GET /beta​/repositories
+//	api endpoint: GET /beta/repositories
 //	responses:
 // 		200: Return Repository slice and nil error
 // 		401: Authentication required
@@ -29,7 +29,7 @@ func (a RepositoryManagementAPI) List() ([]Repository, error) {
 }
 
 // Delete repository of any format
-//	api endpoint: DELETE /beta​/repositories​/{repositoryName}
+//	api endpoint: DELETE /beta/repositories/{repositoryName}
 //	parameters:
 // 		repositoryName: Name of the repository to delete
 // 			required: true
@@ -46,7 +46,7 @@ func (a RepositoryManagementAPI) Delete(repositoryName string) error {
 }
 
 // EnableHealthCheck enables repository health check. Proxy repositories only.
-//	api endpoint: POST ​/beta​/repositories​/{repositoryName}​/health-check
+//	api endpoint: POST /beta/repositories/{repositoryName}/health-check
 //	parameters:
 // 		repositoryName: Name of the repository to enable Repository Health Check for
 // 			required: true
@@ -64,7 +64,7 @@ func (a RepositoryManagementAPI) EnableHealthCheck(repositoryName string) error 
 }
 
 // DisableHealthCheck disables repository health check. Proxy repositories only.
-//	api endpoint: DELETE ​ /beta​/repositories​/{repositoryName}​/health-check
+//	api endpoint: DELETE  /beta/repositories/{repositoryName}/health-check
 //	parameters:
 // 		repositoryName: Name of the repository to disable Repository Health Check for
 // 			required: true
@@ -81,7 +81,7 @@ func (a RepositoryManagementAPI) DisableHealthCheck(repositoryName string) error
 }
 
 // InvalidateCache invalidates repository cache. Proxy or group repositories only.
-//	api endpoint: POST /beta​/repositories​/{repositoryName}​/invalidate-cache
+//	api endpoint: POST /beta/repositories/{repositoryName}/invalidate-cache
 //	parameters:
 // 		repositoryName Name of the repository to invalidate cache
 // 			required: true
@@ -99,7 +99,7 @@ func (a RepositoryManagementAPI) InvalidateCache(repositoryName string) error {
 }
 
 // RebuildIndex schedule a 'Repair - Rebuild repository search' Task. Hosted or proxy repositories only.
-//	api endpoint: POST ​/beta​/repositories​/{repositoryName}​/rebuild-index
+//	api endpoint: POST /beta/repositories/{repositoryName}/rebuild-index
 //	parameters:
 // 		repositoryName
 //			description: Name of the repository to rebuild index

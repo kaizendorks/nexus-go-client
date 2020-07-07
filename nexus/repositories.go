@@ -11,7 +11,7 @@ import (
 type RepositoriesAPI api
 
 // List return a slice of RepositoryV1 objects
-//	api endpoint: GET ​/v1​/repositories
+//	api endpoint: GET /v1/repositories
 //	responses:
 // 		200: successful operation returns slice of RepositoryV1 and nil error
 func (a RepositoriesAPI) List() ([]RepositoryV1, error) {

@@ -10,7 +10,7 @@ import (
 )
 
 // CreateP2Proxy creates new P2 proxy repository
-//	endpoint: POST ​/beta​/repositories​/p2​/proxy
+//	endpoint: POST /beta/repositories/p2/proxy
 //	parameters:
 // 		r: P2ProxyRepository config
 //	responses:
@@ -28,7 +28,7 @@ func (a RepositoryManagementAPI) CreateP2Proxy(r P2ProxyRepository) error {
 }
 
 // UpdateP2Proxy updates P2 proxy repository
-//	endpoint: PUT ​/beta​/repositories​/p2​/proxy​/{repositoryName}
+//	endpoint: PUT /beta/repositories/p2/proxy/{repositoryName}
 //	parameters:
 // 		repositoryName: Name of the repository to update
 // 		r: P2ProxyRepository config

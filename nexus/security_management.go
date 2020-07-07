@@ -11,7 +11,7 @@ import (
 type SecurityManagementAPI api
 
 // ListUserSources retrieves a list of the available user sources.
-//	api endpoint: GET ​/beta/security​/user-sources
+//	api endpoint: GET /beta/security/user-sources
 //	responses:
 // 		200: successful operation returns UserSource slice"
 // 		403: The user does not have permission to perform the operation.

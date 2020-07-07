@@ -10,7 +10,7 @@ import (
 )
 
 // CreateMavenHosted creates Maven hosted repository
-//	endpoint: POST ​/beta​/repositories​/maven​/hosted
+//	endpoint: POST /beta/repositories/maven/hosted
 //	parameters:
 // 		r: MavenHostedRepository config
 //	responses:
@@ -28,7 +28,7 @@ func (a RepositoryManagementAPI) CreateMavenHosted(r MavenHostedRepository) erro
 }
 
 // UpdateMavenHosted updates Maven hosted repository
-//	endpoint: PUT ​/beta​/repositories​/maven​/hosted​/{repositoryName}
+//	endpoint: PUT /beta/repositories/maven/hosted/{repositoryName}
 //	parameters:
 // 		repositoryName: Name of the repository to update
 // 		r: MavenHostedRepository config
@@ -48,7 +48,7 @@ func (a RepositoryManagementAPI) UpdateMavenHosted(repositoryName string, r Mave
 }
 
 // CreateMavenProxy creates Maven proxy repository
-//	endpoint: POST /beta​/repositories​/maven​/proxy
+//	endpoint: POST /beta/repositories/maven/proxy
 //	parameters:
 // 		r: MavenProxyRepository config
 //	responses:
@@ -66,7 +66,7 @@ func (a RepositoryManagementAPI) CreateMavenProxy(r MavenProxyRepository) error 
 }
 
 // UpdateMavenProxy updates Maven proxy repository
-//	endpoint: PUT ​/beta​/repositories​/maven​/proxy​/{repositoryName}
+//	endpoint: PUT /beta/repositories/maven/proxy/{repositoryName}
 //	parameters:
 // 		repositoryName: Name of the repository to update
 // 		r: MavenProxyRepository config

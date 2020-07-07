@@ -90,7 +90,17 @@ func (suite *NexusClientSuite) TestSecurityManagementUser() {
 	assert.NoError(suite.T(), err)
 
 	// Change password
-	err = suite.client.SecurityManagementUsers.ChangePassword(id, "newpass")
+	newPassword := "newpass"
+	err = suite.client.SecurityManagementUsers.ChangePassword(id, newPassword)
+	assert.NoError(suite.T(), err)
+
+	// Login with new password
+	newClient := nexus.NewClient(nexus.ClientConfig{
+		Host:     suite.client.Config.Host,
+		Username: id,
+		Password: newPassword,
+	})
+	err = newClient.Status.StatusWritable()
 	assert.NoError(suite.T(), err)
 
 	// cleanup

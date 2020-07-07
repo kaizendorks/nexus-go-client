@@ -10,7 +10,7 @@ import (
 )
 
 // CreateNPMGroup creates NPM group repository
-//	endpoint: POST ​/beta​/repositories​/npm​/group
+//	endpoint: POST /beta/repositories/npm/group
 //	parameters:
 // 		r: NPMGroupRepository config
 //	responses:
@@ -28,7 +28,7 @@ func (a RepositoryManagementAPI) CreateNPMGroup(r NPMGroupRepository) error {
 }
 
 // UpdateNPMGroup updates NPM group repository
-//	endpoint: PUT ​/beta​/repositories​/npm​/group​/{repositoryName}
+//	endpoint: PUT /beta/repositories/npm/group/{repositoryName}
 //	parameters:
 // 		r: NPMGroupRepository config
 // 		repositoryName: Name of the repository to update
@@ -48,7 +48,7 @@ func (a RepositoryManagementAPI) UpdateNPMGroup(repositoryName string, r NPMGrou
 }
 
 // CreateNPMHosted create NPM hosted repository
-//	endpoint: POST ​/beta​/repositories​/npm​/hosted
+//	endpoint: POST /beta/repositories/npm/hosted
 //	parameters:
 // 		r: NPMHostedRepository config
 //	responses:
@@ -66,7 +66,7 @@ func (a RepositoryManagementAPI) CreateNPMHosted(r NPMHostedRepository) error {
 }
 
 // UpdateNPMHosted updates NPM hosted repository
-//	endpoint: PUT ​/beta​/repositories​/npm​/hosted​/{repositoryName}
+//	endpoint: PUT /beta/repositories/npm/hosted/{repositoryName}
 //	parameters:
 // 		r: NPMHostedRepository config
 // 		repositoryName: Name of the repository to update
@@ -86,7 +86,7 @@ func (a RepositoryManagementAPI) UpdateNPMHosted(repositoryName string, r NPMHos
 }
 
 // CreateNPMProxy creates NPM proxy repository
-//	endpoint: POST ​/beta​/repositories​/npm​/proxy
+//	endpoint: POST /beta/repositories/npm/proxy
 //	parameters:
 // 		r: NPMProxyRepository config
 //	responses:
@@ -104,7 +104,7 @@ func (a RepositoryManagementAPI) CreateNPMProxy(r NPMProxyRepository) error {
 }
 
 // UpdateNPMProxy updates NPM proxy repository
-//	endpoint: PUT ​/beta​/repositories​/npm​/proxy​/{repositoryName}
+//	endpoint: PUT /beta/repositories/npm/proxy/{repositoryName}
 //	parameters:
 // 		r: NPMProxyRepository config
 // 		repositoryName: Name of the repository to update
