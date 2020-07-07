@@ -10,7 +10,7 @@ import (
 )
 
 // CreateGitLFSHosted create GitLFS hosted repository
-//	endpoint: POST ​/beta​/repositories​/gitlfs​/hosted
+//	endpoint: POST /beta/repositories/gitlfs/hosted
 //	parameters:
 // 		r: GitLFSHostedRepository config
 //	responses:
@@ -28,7 +28,7 @@ func (a RepositoryManagementAPI) CreateGitLFSHosted(r GitLFSHostedRepository) er
 }
 
 // UpdateGitLFSHosted updates GitLFS hosted repository
-//	endpoint: PUT ​/beta​/repositories​/gitlfs​/hosted​/{repositoryName}
+//	endpoint: PUT /beta/repositories/gitlfs/hosted/{repositoryName}
 //	parameters:
 // 		r: GitLFSHostedRepository config
 // 		repositoryName: Name of the repository to update

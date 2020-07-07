@@ -10,7 +10,7 @@ import (
 )
 
 // CreateBowerGroup creates Bower group repository
-//	endpoint: POST ​/beta​/repositories​/bower​/group
+//	endpoint: POST /beta/repositories/bower/group
 //	parameters:
 // 		r: BowerGroupRepository config
 //	responses:
@@ -28,7 +28,7 @@ func (a RepositoryManagementAPI) CreateBowerGroup(r BowerGroupRepository) error 
 }
 
 // UpdateBowerGroup updates Bower group repository
-//	endpoint: PUT ​/beta​/repositories​/bower​/group​/{repositoryName}
+//	endpoint: PUT /beta/repositories/bower/group/{repositoryName}
 //	parameters:
 // 		r: BowerGroupRepository config
 // 		repositoryName: Name of the repository to update
@@ -48,7 +48,7 @@ func (a RepositoryManagementAPI) UpdateBowerGroup(repositoryName string, r Bower
 }
 
 // CreateBowerHosted create Bower hosted repository
-//	endpoint: POST ​/beta​/repositories​/bower​/hosted
+//	endpoint: POST /beta/repositories/bower/hosted
 //	parameters:
 // 		r: BowerHostedRepository config
 //	responses:
@@ -66,7 +66,7 @@ func (a RepositoryManagementAPI) CreateBowerHosted(r BowerHostedRepository) erro
 }
 
 // UpdateBowerHosted updates Bower hosted repository
-//	endpoint: PUT ​/beta​/repositories​/bower​/hosted​/{repositoryName}
+//	endpoint: PUT /beta/repositories/bower/hosted/{repositoryName}
 //	parameters:
 // 		r: BowerHostedRepository config
 // 		repositoryName: Name of the repository to update
@@ -86,7 +86,7 @@ func (a RepositoryManagementAPI) UpdateBowerHosted(repositoryName string, r Bowe
 }
 
 // CreateBowerProxy creates Bower proxy repository
-//	endpoint: POST ​/beta​/repositories​/bower​/proxy
+//	endpoint: POST /beta/repositories/bower/proxy
 //	parameters:
 // 		r: BowerProxyRepository config
 //	responses:
@@ -104,7 +104,7 @@ func (a RepositoryManagementAPI) CreateBowerProxy(r BowerProxyRepository) error 
 }
 
 // UpdateBowerProxy updates Bower proxy repository
-//	endpoint: PUT ​/beta​/repositories​/bower​/proxy​/{repositoryName}
+//	endpoint: PUT /beta/repositories/bower/proxy/{repositoryName}
 //	parameters:
 // 		r: BowerProxyRepository config
 // 		repositoryName: Name of the repository to update

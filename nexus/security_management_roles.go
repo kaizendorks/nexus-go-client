@@ -12,7 +12,7 @@ import (
 type SecurityManagementRolesAPI api
 
 // List retrieves a list of all the existing roles
-//	api endpoint: GET ​/beta/security/roles
+//	api endpoint: GET /beta/security/roles
 //	parameters:
 // 		rf: RoleFilter object consisting of options to filter the results by.
 //	responses:
@@ -59,7 +59,7 @@ func (a SecurityManagementRolesAPI) Create(r Role) (RoleResponse, error) {
 }
 
 // Get retrieves an existing role by ID
-//	api endpoint: GET ​/beta/security/roles/{id}?source={source}
+//	api endpoint: GET /beta/security/roles/{id}?source={source}
 //	parameters:
 //		id: The id of the role to look for
 // 		rf: RoleFilter object consisting of options to filter the results by.

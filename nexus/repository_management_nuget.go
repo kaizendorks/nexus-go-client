@@ -10,7 +10,7 @@ import (
 )
 
 // CreateNugetGroup creates Nuget group repository
-//	endpoint: POST ​/beta​/repositories​/nuget​/group
+//	endpoint: POST /beta/repositories/nuget/group
 //	parameters:
 // 		r: NugetGroupRepository config
 //	responses:
@@ -28,7 +28,7 @@ func (a RepositoryManagementAPI) CreateNugetGroup(r NugetGroupRepository) error 
 }
 
 // UpdateNugetGroup updates Nuget group repository
-//	endpoint: PUT ​/beta​/repositories​/nuget​/group​/{repositoryName}
+//	endpoint: PUT /beta/repositories/nuget/group/{repositoryName}
 //	parameters:
 // 		r: NugetGroupRepository config
 // 		repositoryName: Name of the repository to update
@@ -48,7 +48,7 @@ func (a RepositoryManagementAPI) UpdateNugetGroup(repositoryName string, r Nuget
 }
 
 // CreateNugetHosted create Nuget hosted repository
-//	endpoint: POST ​/beta​/repositories​/nuget​/hosted
+//	endpoint: POST /beta/repositories/nuget/hosted
 //	parameters:
 // 		r: NugetHostedRepository config
 //	responses:
@@ -66,7 +66,7 @@ func (a RepositoryManagementAPI) CreateNugetHosted(r NugetHostedRepository) erro
 }
 
 // UpdateNugetHosted updates Nuget hosted repository
-//	endpoint: PUT ​/beta​/repositories​/nuget​/hosted​/{repositoryName}
+//	endpoint: PUT /beta/repositories/nuget/hosted/{repositoryName}
 //	parameters:
 // 		r: NugetHostedRepository config
 // 		repositoryName: Name of the repository to update
@@ -86,7 +86,7 @@ func (a RepositoryManagementAPI) UpdateNugetHosted(repositoryName string, r Nuge
 }
 
 // CreateNugetProxy creates Nuget proxy repository
-//	endpoint: POST ​/beta​/repositories​/nuget​/proxy
+//	endpoint: POST /beta/repositories/nuget/proxy
 //	parameters:
 // 		r: NugetProxyRepository config
 //	responses:
@@ -104,7 +104,7 @@ func (a RepositoryManagementAPI) CreateNugetProxy(r NugetProxyRepository) error 
 }
 
 // UpdateNugetProxy updates Nuget proxy repository
-//	endpoint: PUT ​/beta​/repositories​/nuget​/proxy​/{repositoryName}
+//	endpoint: PUT /beta/repositories/nuget/proxy/{repositoryName}
 //	parameters:
 // 		r: NugetProxyRepository config
 // 		repositoryName: Name of the repository to update

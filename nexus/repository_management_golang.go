@@ -10,7 +10,7 @@ import (
 )
 
 // CreateGolangGroup creates Golang group repository
-//	endpoint: POST ​/beta​/repositories​/go/group
+//	endpoint: POST /beta/repositories/go/group
 //	parameters:
 // 		r: GolangGroupRepository config
 //	responses:
@@ -28,7 +28,7 @@ func (a RepositoryManagementAPI) CreateGolangGroup(r GolangGroupRepository) erro
 }
 
 // UpdateGolangGroup updates Golang group repository
-//	endpoint: PUT ​/beta​/repositories​/go/group​/{repositoryName}
+//	endpoint: PUT /beta/repositories/go/group/{repositoryName}
 //	parameters:
 // 		r: GolangGroupRepository config
 // 		repositoryName: Name of the repository to update
@@ -48,7 +48,7 @@ func (a RepositoryManagementAPI) UpdateGolangGroup(repositoryName string, r Gola
 }
 
 // CreateGolangProxy creates Golang proxy repository
-//	endpoint: POST ​/beta​/repositories​/go/proxy
+//	endpoint: POST /beta/repositories/go/proxy
 //	parameters:
 // 		r: GolangProxyRepository config
 //	responses:
@@ -66,7 +66,7 @@ func (a RepositoryManagementAPI) CreateGolangProxy(r GolangProxyRepository) erro
 }
 
 // UpdateGolangProxy updates Golang proxy repository
-//	endpoint: PUT ​/beta​/repositories​/go/proxy​/{repositoryName}
+//	endpoint: PUT /beta/repositories/go/proxy/{repositoryName}
 //	parameters:
 // 		r: GolangProxyRepository config
 // 		repositoryName: Name of the repository to update

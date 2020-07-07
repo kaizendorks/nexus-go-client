@@ -10,7 +10,7 @@ import (
 )
 
 // CreateFileStore create a new file blob store
-//	endpoint: POST /beta​/blobstores​/file
+//	endpoint: POST /beta/blobstores/file
 //	parameters:
 // 		bs: set of config options to use when creating the new blob store
 //	responses:
@@ -26,7 +26,7 @@ func (a BlobStoreAPI) CreateFileStore(bs FileBlobStoreConfig) error {
 }
 
 // GetFileStore gets a file blob store configuration by name
-//	endpoint: GET /beta​/blobstores​/file​/{name}
+//	endpoint: GET /beta/blobstores/file/{name}
 //	parameters:
 // 		blobStoreName: The name of the file blob store to read
 //	responses:
@@ -45,7 +45,7 @@ func (a BlobStoreAPI) GetFileStore(blobStoreName string) (FileBlobStore, error) 
 }
 
 // UpdateFileStore updates an existing file blob store configuration by name
-//	endpoint: ​/beta​/blobstores​/file​/{name}
+//	endpoint: /beta/blobstores/file/{name}
 //	parameters:
 // 		blobStoreName: The name of the file blob store to update
 // 		bs: FileBlobStore configuration

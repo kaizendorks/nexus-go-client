@@ -11,7 +11,7 @@ import (
 type AssetsAPI api
 
 // List assets
-//	api endpoint: GET /v1​/assets
+//	api endpoint: GET /v1/assets
 //	parameters:
 // 		af: AssetFilter object consisting of options to filter the results by.
 //	responses:
@@ -35,7 +35,7 @@ func (a AssetsAPI) List(af AssetFilter) (AssetListResponse, error) {
 }
 
 // Get a single asset
-//	endpoint: GET /v1​/assets​/{id}
+//	endpoint: GET /v1/assets/{id}
 //	parameters:
 //		assetId: ID of the asset to get
 //	responses:
@@ -57,7 +57,7 @@ func (a AssetsAPI) Get(assetId string) (Asset, error) {
 }
 
 // Delete a single asset
-//	endpoint: DELETE /v1​/assets​/{id}
+//	endpoint: DELETE /v1/assets/{id}
 // 	parameters:
 // 		assetId: ID of the asset to delete
 // 	responses:

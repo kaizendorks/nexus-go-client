@@ -12,7 +12,7 @@ import (
 type ScriptAPI api
 
 // List all stored scripts
-//	api endpoint: GET /v1​/script
+//	api endpoint: GET /v1/script
 //	responses:
 // 		200: successful operation returns a Script slice and nil error
 func (a ScriptAPI) List() ([]Script, error) {
@@ -29,7 +29,7 @@ func (a ScriptAPI) List() ([]Script, error) {
 }
 
 // Create adds a new script
-//	api endpoint: POST /v1​/script
+//	api endpoint: POST /v1/script
 // summary: Add a new script
 //	parameters:
 // 		s: Script object with name, content and type
@@ -47,7 +47,7 @@ func (a ScriptAPI) Create(s Script) error {
 }
 
 // Get fetches script by name
-//	api endpoint: GET /v1​/script​/{name}
+//	api endpoint: GET /v1/script/{name}
 //	parameters:
 // 		scriptName: The name of the script.
 //	responses:
@@ -67,7 +67,7 @@ func (a ScriptAPI) Get(scriptName string) (Script, error) {
 }
 
 // Update updates the contents of an existing script by name.
-//	api endpoint: PUT /v1​/script​/{name}
+//	api endpoint: PUT /v1/script/{name}
 //	parameters:
 // 		s: Script object
 //	responses:
@@ -85,7 +85,7 @@ func (a ScriptAPI) Update(s Script) error {
 }
 
 // Delete existing script by name.
-//	api endpoint: DELETE /v1​/script​/{name}
+//	api endpoint: DELETE /v1/script/{name}
 //	parameters:
 // 		scriptName: The name of the script to delete.
 //	responses:
@@ -99,7 +99,7 @@ func (a ScriptAPI) Delete(scriptName string) error {
 }
 
 // Run executes an existing script
-//	api endpoint: PUT /v1​/script​/{name}/run
+//	api endpoint: PUT /v1/script/{name}/run
 //	parameters:
 // 		scriptName: the name of the script to execute.
 // 		params: an optional key/value map containing string params (use nil for script without params)

@@ -10,7 +10,7 @@ import (
 )
 
 // CreateDockerGroup creates Docker group repository
-//	endpoint: POST ​/beta​/repositories​/docker​/group
+//	endpoint: POST /beta/repositories/docker/group
 //	parameters:
 // 		r: DockerGroupRepository config
 //	responses:
@@ -28,7 +28,7 @@ func (a RepositoryManagementAPI) CreateDockerGroup(r DockerGroupRepository) erro
 }
 
 // UpdateDockerGroup updates Docker group repository
-//	endpoint: PUT ​/beta​/repositories​/docker​/group​/{repositoryName}
+//	endpoint: PUT /beta/repositories/docker/group/{repositoryName}
 //	parameters:
 // 		r: DockerGroupRepository config
 // 		repositoryName: Name of the repository to update
@@ -48,7 +48,7 @@ func (a RepositoryManagementAPI) UpdateDockerGroup(repositoryName string, r Dock
 }
 
 // CreateDockerHosted create Docker hosted repository
-//	endpoint: POST ​/beta​/repositories​/docker​/hosted
+//	endpoint: POST /beta/repositories/docker/hosted
 //	parameters:
 // 		r: DockerHostedRepository config
 //	responses:
@@ -66,7 +66,7 @@ func (a RepositoryManagementAPI) CreateDockerHosted(r DockerHostedRepository) er
 }
 
 // UpdateDockerHosted updates Docker hosted repository
-//	endpoint: PUT ​/beta​/repositories​/docker​/hosted​/{repositoryName}
+//	endpoint: PUT /beta/repositories/docker/hosted/{repositoryName}
 //	parameters:
 // 		r: DockerHostedRepository config
 // 		repositoryName: Name of the repository to update
@@ -86,7 +86,7 @@ func (a RepositoryManagementAPI) UpdateDockerHosted(repositoryName string, r Doc
 }
 
 // CreateDockerProxy creates Docker proxy repository
-//	endpoint: POST ​/beta​/repositories​/docker​/proxy
+//	endpoint: POST /beta/repositories/docker/proxy
 //	parameters:
 // 		r: DockerProxyRepository config
 //	responses:
@@ -104,7 +104,7 @@ func (a RepositoryManagementAPI) CreateDockerProxy(r DockerProxyRepository) erro
 }
 
 // UpdateDockerProxy updates Docker proxy repository
-//	endpoint: PUT ​/beta​/repositories​/docker​/proxy​/{repositoryName}
+//	endpoint: PUT /beta/repositories/docker/proxy/{repositoryName}
 //	parameters:
 // 		r: DockerProxyRepository config
 // 		repositoryName: Name of the repository to update

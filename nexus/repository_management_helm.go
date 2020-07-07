@@ -10,7 +10,7 @@ import (
 )
 
 // CreateHelmHosted creates Helm hosted repository
-//	endpoint: POST ​/beta​/repositories​/helm​/hosted
+//	endpoint: POST /beta/repositories/helm/hosted
 //	parameters:
 // 		r: HelmHostedRepository config
 //	responses:
@@ -28,7 +28,7 @@ func (a RepositoryManagementAPI) CreateHelmHosted(r HelmHostedRepository) error 
 }
 
 // UpdateHelmHosted updates Helm hosted repository
-//	endpoint: PUT ​/beta​/repositories​/helm​/hosted​/{repositoryName}
+//	endpoint: PUT /beta/repositories/helm/hosted/{repositoryName}
 //	parameters:
 // 		repositoryName: Name of the repository to update
 // 		r: HelmHostedRepository config
@@ -48,7 +48,7 @@ func (a RepositoryManagementAPI) UpdateHelmHosted(repositoryName string, r HelmH
 }
 
 // CreateHelmProxy creates Helm proxy repository
-//	endpoint: POST /beta​/repositories​/helm​/proxy
+//	endpoint: POST /beta/repositories/helm/proxy
 //	parameters:
 // 		r: HelmProxyRepository config
 //	responses:
@@ -66,7 +66,7 @@ func (a RepositoryManagementAPI) CreateHelmProxy(r HelmProxyRepository) error {
 }
 
 // UpdateHelmProxy updates Helm proxy repository
-//	endpoint: PUT ​/beta​/repositories​/helm​/proxy​/{repositoryName}
+//	endpoint: PUT /beta/repositories/helm/proxy/{repositoryName}
 //	parameters:
 // 		repositoryName: Name of the repository to update
 // 		r: HelmProxyRepository config

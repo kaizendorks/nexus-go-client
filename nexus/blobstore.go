@@ -11,7 +11,7 @@ import (
 type BlobStoreAPI api
 
 // List all blob stores
-//	endpoint: GET /beta​/blobstores
+//	endpoint: GET /beta/blobstores
 //	responses:
 // 		200: successful operation returns BlobStore slice and nill error
 func (a BlobStoreAPI) List() ([]BlobStore, error) {
@@ -27,7 +27,7 @@ func (a BlobStoreAPI) List() ([]BlobStore, error) {
 }
 
 // Delete a blob store by name
-//	endpoint: DELETE ​ /beta​/blobstores​/{name}
+//	endpoint: DELETE /beta/blobstores/{name}
 //	parameters:
 // 		blobStoreName: The name of the blob store to delete
 // 	responses:
@@ -40,7 +40,7 @@ func (a BlobStoreAPI) Delete(blobStoreName string) error {
 }
 
 // GetQuotaStatus using a blob store name, for checking if the blob store has a quota and is in violation of that quota.
-//	endpoint: GET /v1​/blobstores​/{id}​/quota-status
+//	endpoint: GET /v1/blobstores/{id}/quota-status
 //	parameters:
 // 		blobStoreName: The name of the blob store for which to return the quota status
 //	responses:

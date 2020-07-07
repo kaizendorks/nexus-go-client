@@ -10,7 +10,7 @@ import (
 )
 
 // CreateConanProxy creates new Conan proxy repository
-//	endpoint: POST ​/beta​/repositories​/conan​/proxy
+//	endpoint: POST /beta/repositories/conan/proxy
 //	parameters:
 // 		r: ConanProxyRepository config
 //	responses:
@@ -28,7 +28,7 @@ func (a RepositoryManagementAPI) CreateConanProxy(r ConanProxyRepository) error 
 }
 
 // UpdateConanProxy updates Conan proxy repository
-//	endpoint: PUT /beta​/repositories​/conan​/proxy​/{repositoryName}
+//	endpoint: PUT /beta/repositories/conan/proxy/{repositoryName}
 //	parameters:
 // 		repositoryName: Name of the repository to update
 // 		r: ConanProxyRepository config
