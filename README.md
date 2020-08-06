@@ -1,7 +1,7 @@
 # nexus-go-client
 >A minimal Golang client for interacting with the Nexus Repository APIs.
 
-[![Build Status](https://travis-ci.org/kaizendorks/nexus-go-client.svg?branch=master)](https://travis-ci.org/kaizendorks/vuecli-in-docker)
+[![Build Status](https://travis-ci.org/kaizendorks/nexus-go-client.svg?branch=master)](https://travis-ci.org/kaizendorks/nexus-go-client)
 
 ## Description
 
